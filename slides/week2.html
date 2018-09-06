@@ -1,0 +1,137 @@
+---
+layout: slide
+title: "Uge 2 - Strings & functions"
+---
+
+	<section>
+		Opsamling
+		<!--<pre><code python data-trim data-noescape>
+
+		</code></pre> -->
+		
+	</section>
+
+
+	<section>
+		<p> Opgave 1: Pandekageopskrift</p>
+		<p style="font-size: smaller;">
+		I denne opgave skal I bruge variable i python til at modificere en opskrift på pandekager ud fra hvor mange æg der er i køleskabet.
+		</p>
+	</section>
+
+	<section style="font-size: smaller;">
+		
+		<p>1.1 Byg videre på koden nedenfor</p>
+		<ol>
+			<li> Brug basisopskriften til at printe en modificeret opskrift ud fra variablen <icode>eggs_in_fridge</icode></li>
+			<li> Hvor mange personer er der pandekager til hvis man har 2 æg?</li>
+		</ol>
+
+		<pre><code python data-trim data-noescape>
+		
+		# Base recipe
+		persons = 7
+		eggs = 3
+		milk = 2.5   # dl
+		butter = 50  # gr
+		beer = 0.5   # dl
+		flour = 125  # gr
+
+		# Frigde
+		eggs_in_fridge = 1
+
+		# Modified recipe
+
+		# Print the modified base recipe with eggs_in_fridge amount of eggs
+		</code></pre>
+
+	</section>
+
+	<section>
+		<p> Opgave 2: Hello World!</p>
+		<div style="font-size: smaller;">
+			<p> Test test test
+			
+
+			</p>
+		</div>
+	</section>
+
+	<section>
+		<p> Opgave 3: Automatisk litteraturliste </p>
+		<p style="font-size: smaller;">
+		På nettet findes der flere værktøjer til at generere litteraturlister automatisk. I denne opgave skal I lave en enkel udgave i python med nogle af de funktioner I har lært indtil videre.
+		</p>
+
+		<!-- I denne opgave skal vi lave vores egen (enkle version), som har nogle åbenlyse begrænsinger ved kun accepterer en enkelt forfatter uden mellemnavn -->
+
+	</section>
+	<section style="font-size: smaller;">
+		<p>3.1 Data</p>
+		<ol class="descr">
+			<li>Tag udgangspunkt i artiklen <a href="http://www.aclweb.org/anthology/D17-1265">her</a></li>
+			<li><emph>Skriv følgende oplysninger for artiklen som variable i python</emph>
+				<ul>
+					<li>Fornavn</li>
+					<li>Efternavn</li>
+					<li>Årstal</li>
+					<li>Titel</li>
+					<li>Konference</li>
+					<li>Sidetal (start)</li>
+					<li>Sidetal (slut)</li>
+				</ul>
+			</li>
+			<li>Print hver variabel og deres type adskilt af tab i python</li>
+
+		</ol>
+	</section>
+	<section style="font-size: smaller;">
+		<p>3.2 Automatisk formattering af litteraturliste</p>
+		<p style="text-align: left;"> Skriv en funktion som tager variablene fra sidste slide som input og outputter et punkt i en litteraturliste. Den outputtede litteraturliste skal følge følgende format: </p>
+
+		<p style="text-align: left;"><icode>Efternavn</icode>, <icode>Fornavn</icode>. "<icode>Titel</icode>". <icode>Konference</icode>. <icode>Sidetal_start</icode>-<icode>Sidetal_slut</icode>. (<icode>Årstal</icode>)</p>
+
+		<ol>
+			<li>Tag udgangspunkt i funktionen på næste slide</li>
+			<li>Udfyld hvilke parametre funktionen tager</li>
+			<li>Færdiggør "type-kontrakten" øverst i doc-strengen</li>
+			<li>Skriv funktionen færdig så den returnerer den færdigformatterede streng</li>
+			<li>Brug funktionen i idle og gem den returnerede streng i en ny variabel og print den efterfølgende</li>
+
+		</ol>
+	</section>
+	<section>
+		<pre><code python data-trim data-noescape>
+		def BibliographyGenerator(<mark>parameters</mark>):
+			""" <mark>() -> </mark>
+			Returns a bibliography entry from the bibliography 
+			data given by the parameters of the function.
+			"""
+
+			return ""
+		
+		</code></pre>
+
+	</section>
+	<section style="font-size: smaller;text-align: left;">
+		<p>Spørgsmål</p>
+		<ol> 
+			<li>Hvorfor gemmer vi outputtet fra funktionen i en ny variabel? Kunne vi ikke bare have nøjes med at printe outputtet?</li>
+			<li>Hvorfor er type-kontrakten vigtig?</li>
+			<li>Dette er en simpel formattering af et punkt i en litteraturliste. Har I nogen idéer til hvordan den ville kunne udvides?
+				<ul>
+					<li>Flere forfattere</li>
+					<li>Andre formater (hvor forfatterens fornavn eksempelvis skal forkortes)</li>
+				</ul>
+			</li>
+		</ol>
+
+
+	</section>
+	<!--<section style="font-size:x-large;text-align:left;">
+	<p><u>Oplysninger</u></p>
+	<p>Machine Translation, it’s a question of style, innit? (titel)</p>
+	<p>Proceedings of the 2017 Conference on Empirical Methods in Natural Language Processing (konference)</p>
+	<p>2017 (årstal)</p>
+	<p>2507–2512 (sidetal)</p>
+	</section>-->

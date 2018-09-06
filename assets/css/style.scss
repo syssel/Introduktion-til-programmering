@@ -1,0 +1,24 @@
+---
+---
+@import "{{ site.theme }}";
+
+header {
+  display: none;
+}
+
+footer {
+  display: none;
+}
+
+code {
+  -moz-tab-size: 4; /* Firefox */
+  -o-tab-size: 4; /* Opera 10.6-12.1 */
+  tab-size: 4;
+}
+
+icode {
+  font-family:monospace;
+  color:#dcdcdc;
+  background-color:#3f3f3f;
+  font-size:smaller;
+}
