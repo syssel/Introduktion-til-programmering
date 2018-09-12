@@ -1,76 +1,169 @@
 ---
 layout: slide
 title: "Uge 2 - Strings & functions"
+solutions: "hide"
 ---
 
 	<section>
-		Opsamling
-		<!--<pre><code python data-trim data-noescape>
-
-		</code></pre> -->
-		
+		<p> Program for i dag</p>
+		<ul style="font-size: smaller;">
+			<li>Vi skal lave øvelser med
+				<ul style="font-size: smaller;">
+					<li> Functions (indbyggede og vores egne)</li>
+					<li> Integers & floats</li>
+					<li> Strings (hvordan man arbejder med dem)</li>
+				</ul>
+			</li>
+			<li>Opgave 1: BMI-beregner</li>
+			<li>Opgave 2: Automatisk litteraturliste</li>
+			<li>Selvstændigt arbejde og vejledning</li>
+		</ol>
+		</p>
 	</section>
 
 
 	<section>
-		<p> Opgave 1: Pandekageopskrift</p>
+		<p> Opgave 1: BMI-beregner</p>
 		<p style="font-size: smaller;">
-		I denne opgave skal I bruge variable i python til at modificere en opskrift på pandekager ud fra hvor mange æg der er i køleskabet.
+		I denne opgave skal I lave et program som ud fra højde og vægt, kan beregne en brugers BMI.
 		</p>
+		<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Tape_measure_colored.jpeg/512px-Tape_measure_colored.jpeg">
 	</section>
 
 	<section style="font-size: smaller;">
-		
-		<p>1.1 Byg videre på koden nedenfor</p>
-		<ol>
-			<li> Brug basisopskriften til at printe en modificeret opskrift ud fra variablen <icode>eggs_in_fridge</icode></li>
-			<li> Hvor mange personer er der pandekager til hvis man har 2 æg?</li>
+		<p>1.1 Funktion til at beregne BMI</p>
+		<ol style="font-size: smaller;">
+			<li>Skriv koden i en .py-fil i Idle</li>
+			<li>Lav en funktion til at beregne BMI, som
+				<ul>
+					<li>tager 2 argumenter - højde og vægt</li>
+					<li>returnerer et BMI-tal</li>
+				</ul>
+			</li>
+			<li>Giv funktionen en doc-string</li>
+			<li>Brug funktionen til at beregne BMI-tallet for en person som vejer 75 kilo og er 170 cm høj</li>
 		</ol>
 
+	</section>
+
+	<section class="solution" style="font-size: smaller;">
+		<p>1.1 Funktion til at beregne BMI</p>
 		<pre><code python data-trim data-noescape>
-		
-		# Base recipe
-		persons = 7
-		eggs = 3
-		milk = 2.5   # dl
-		butter = 50  # gr
-		beer = 0.5   # dl
-		flour = 125  # gr
+			def BMICalculator(height, weight):
+				""" (float, float ) -> float
+			            Returns the BMI calculated from height and weight
+			            parameters using the formula weight/height**2.
+				"""
 
-		# Frigde
-		eggs_in_fridge = 1
+				return weight/height**2
 
-		# Modified recipe
+			print(BMICalculator(1.73, 75))
+		</code></pre>
+	</section>
 
-		# Print the modified base recipe with eggs_in_fridge amount of eggs
+
+
+	<section style="font-size: smaller;">
+		<p>1.2 Input fra brugeren</p>
+		<ol style="font-size: smaller;">
+			<li>I py-filen fra sidste slide: 
+				<ul> 
+					<li>lav to variable, <icode>højde</icode> og <icode>vægt</icode>, og assign værdier til dem vha. den inbyggede funktion <icode>input()</icode></li>
+					<li>kør funktionen fra sidste slide med de to variable som input</li>
+				</ul>
+			</li>
+			<li>Hvad sker der når I kører .py-filen?</li>
+		</ol>
+	</section>
+
+
+	<section class="solution" style="font-size: smaller;">
+		<p>1.2 Input fra brugeren</p>
+		<pre><code python data-trim data-noescape>
+			højde = input("Indtast højde: ")
+			vægt = input("Indtast vægt: ")
+
+			højde = float(højde)
+			vægt = float(vægt)
+
+			print(BMICalculator(højde, vægt))
+		</code></pre>
+	</section>
+
+	<section style="font-size: smaller;">
+
+	<p>1.3 BMI-rapport</p>
+		<ol style="font-size: smaller;">
+			<li>Lav en ny funktion som rapporterer BMI-tallet i Idle:
+				<ul>
+					<li>Funktionen skal tage 2 input: <icode>højde</icode>, <icode>vægt</icode></li>
+					<li>Bruger funktionen fra sidste slide til at beregne BMI-tallet ud fra de 2 argumenter</li>
+					<li>Printer følgende meddelelse: <icode>Ud fra højden {X} og vægten {Y} er dit BMI-tal beregnet til at være {Z}</icode>, hvor <icode>{X}</icode> er højden og <icode>{Y}</icode> er vægten og <icode>{Z}</icode> er det beregnede BMI-tal</li>
+				</ul>
+			</li>
+			<li>
+				Brug den nye funktion i .py-filen og kør den igen i Idle.
+			</li>
+		</ol>	
+	</section>
+	<!--<section>
+		<p>1.3 BMI-kategorisering</p>
+		<ol style="font-size: smaller;">
+			<li>Lav en ny funktion som kan beregne om en person er under-, over- eller normalvægtig. Funktionen skal
+				<ul>
+					<li>tage 4 input: <icode>højde</icode>, <icode>vægt</icode> og grænseværdierne for at være over- og undervægtig (e.g., <icode>upper_limit</icode> og <icode>lower_limit</icode>)</li>
+				</ul>
+			</li>
+			<li>Lad vores nye funktion bruge funktionen fra de sidste slides til at beregne BMI-tallet</li>
+			<li>Bestem ud fra grænseværdierne og det beregnede BMI-tal om brugeren er over-, under- eller normalvægtig (tip: brug <icode>if</icode>-statements):
+				<ul>
+					<li>hvis brugeren er undervægtig skal funktionen printe <icode>Dit BMI-tal er {X}, hvilket indikerer undervægt.</icode></li>
+					<li>hvis brugeren er normalvægtig skal funktionen printe <icode>Dit BMI-tal er {X}, hvilket indikerer normalvægt.</icode></li>
+					<li>hvis brugeren er normalvægtig skal funktionen printe <icode>Dit BMI-tal er {X}, hvilket indikerer overvægt.</icode></li>
+				</ul>
+			</li>
+		</ol>	
+	</section> -->
+
+	<section class="solution" style="font-size: smaller;">
+		<p>1.3 BMI-rapport</p>
+		<pre><code python data-trim data-noescape>
+			
+			def BMIReport(height, weight):
+				""" (float, float ) ->
+					Reports the BMI calculated from height and weight
+					parameters using the function BMICalculator.
+				"""
+				bmi = BMICalculator(height, weight)
+					
+				print("Ud fra højden " + str(height) + " og vægten " + str(weight) + " er dit BMI-tal beregnet til at være " + str(bmi))
+				# print("Ud fra højden", str(height), "og vægten", str(weight), "er dit BMI-tal beregnet til at være", str(bmi), sep=" ")
+
+			højde = input("Indtast højde: ")
+			vægt = input("Indtast vægt: ")
+
+			højde = float(højde)
+			vægt = float(vægt)
+
+			BMIReport(højde, vægt)
+
 		</code></pre>
 
 	</section>
 
 	<section>
-		<p> Opgave 2: Hello World!</p>
-		<div style="font-size: smaller;">
-			<p> Test test test
-			
-
-			</p>
-		</div>
-	</section>
-
-	<section>
-		<p> Opgave 3: Automatisk litteraturliste </p>
+		<p>Opgave 2: Automatisk litteraturliste</p>
 		<p style="font-size: smaller;">
 		På nettet findes der flere værktøjer til at generere litteraturlister automatisk. I denne opgave skal I lave en enkel udgave i python med nogle af de funktioner I har lært indtil videre.
 		</p>
-
-		<!-- I denne opgave skal vi lave vores egen (enkle version), som har nogle åbenlyse begrænsinger ved kun accepterer en enkelt forfatter uden mellemnavn -->
+		<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Scientific_citations.png/640px-Scientific_citations.png">
 
 	</section>
 	<section style="font-size: smaller;">
-		<p>3.1 Data</p>
-		<ol class="descr">
+		<p>2.1 Data</p>
+		<ol style="font-size: smaller;">
 			<li>Tag udgangspunkt i artiklen <a href="http://www.aclweb.org/anthology/D17-1265">her</a></li>
-			<li><emph>Skriv følgende oplysninger for artiklen som variable i python</emph>
+			<li><emph>Skriv følgende oplysninger for artiklen som variable i en .py-fil</emph>
 				<ul>
 					<li>Fornavn</li>
 					<li>Efternavn</li>
@@ -85,44 +178,113 @@ title: "Uge 2 - Strings & functions"
 
 		</ol>
 	</section>
+
+	<section class="solution" style="font-size: smaller;">
+		<p>2.1 Data</p>
+		<pre><code python data-trim data-noescape>
+			Fornavn = "Rachel"
+			Efternavn = "Bawden"
+			Årstal = 2017
+			Titel = "Machine Translation, it’s a question of style, innit?"
+			Konference = "Proceedings of the 2017 Conference on Empirical Methods in Natural Language Processing"
+			Start = 2507
+			Slut = 2512
+
+			print(Fornavn, type(Fornavn), sep="\t")
+			print(Efternavn, type(Efternavn), sep="\t")
+			print(Årstal, type(Årstal), sep="\t")
+			print(Titel, type(Titel), sep="\t")
+			print(Konference, type(Konference), sep="\t")
+			print(Start, type(Start), sep="\t")
+			print(Slut, type(Slut), sep="\t")
+		</code></pre>
+	</section>
+
 	<section style="font-size: smaller;">
-		<p>3.2 Automatisk formattering af litteraturliste</p>
-		<p style="text-align: left;"> Skriv en funktion som tager variablene fra sidste slide som input og outputter et punkt i en litteraturliste. Den outputtede litteraturliste skal følge følgende format: </p>
+		<p>2.2 Automatisk formattering af litteraturliste</p>
+		<p style="text-align: left;font-size: smaller;"> Skriv en funktion som tager variablene fra sidste slide som argumenter og som returnerer et punkt i en litteraturliste som en streng. Den returnerede litteraturliste skal følge følgende format: </p>
 
-		<p style="text-align: left;"><icode>Efternavn</icode>, <icode>Fornavn</icode>. "<icode>Titel</icode>". <icode>Konference</icode>. <icode>Sidetal_start</icode>-<icode>Sidetal_slut</icode>. (<icode>Årstal</icode>)</p>
+		<p style="text-align: left;font-size: smaller;"><icode>Efternavn</icode>, <icode>Fornavn</icode>. "<icode>Titel</icode>". <icode>Konference</icode>. <icode>Sidetal_start</icode>-<icode>Sidetal_slut</icode>. (<icode>Årstal</icode>)</p>
 
-		<ol>
-			<li>Tag udgangspunkt i funktionen på næste slide</li>
-			<li>Udfyld hvilke parametre funktionen tager</li>
-			<li>Færdiggør "type-kontrakten" øverst i doc-strengen</li>
+		<ol style="font-size: smaller;">
+			<li>Tag udgangspunkt i funktionen på næste slide og byg videre på .py-filen fra det sidste slide</li>
+			<li>Udfyld hvilke argumenter funktionen tager</li>
+			<li>Færdiggør "type-kontrakten" øverst i doc-stringen</li>
 			<li>Skriv funktionen færdig så den returnerer den færdigformatterede streng</li>
-			<li>Brug funktionen i idle og gem den returnerede streng i en ny variabel og print den efterfølgende</li>
+			<li>Lav et funktionskald med variablene fra sidste slide og gem den returnerede streng i en ny variabel og print den efterfølgende</li>
 
 		</ol>
 	</section>
-	<section>
-		<pre><code python data-trim data-noescape>
-		def BibliographyGenerator(<mark>parameters</mark>):
-			""" <mark>() -> </mark>
-			Returns a bibliography entry from the bibliography 
-			data given by the parameters of the function.
-			"""
 
-			return ""
-		
+	
+	<section style="font-size: smaller;">
+	<p>2.2 Automatisk formattering af litteraturliste</p>
+		<pre><code python data-trim data-noescape>
+			def BibliographyGenerator(<mark>parameters</mark>):
+				""" <mark>() -> </mark>
+				Returns a bibliography entry from the bibliography 
+				data given by the parameters of the function.
+				"""
+
+				return ""
 		</code></pre>
+	</section>
+	
+	<section class="solution" style="font-size: smaller;">
+	<p>2.2 Automatisk formattering af litteraturliste</p>
+		
+		<pre><code python data-trim data-noescape>
+			def BibliographyGenerator(FirstName, LastName, Year, Title, 
+										Proceedings, StartP, EndP):
+				""" (str, str, str, str, str, int, int) -> str
+				Returns a bibliography entry from the bibliography 
+				data given by the parameters of the function.
+				"""
+
+				# Format bib entry
+				Name_format = LastName + ", " + FirstName
+				Title_format = '"' + Title + '"'
+				Proceedings_format = Proceedings
+				Pages_format = str(StartP) + "-" + str(EndP)
+				Year_format = "("+str(Year)+")"
+
+				# Delimiter
+				delimiter = ". "
+
+				return(Name_format + delimiter + Title_format + delimiter +
+						Proceedings_format + delimiter + Pages_format +
+						delimiter + Year_format)
+		</code></pre>
+	</section>
+	
+	<section class="solution" style="font-size: smaller;">
+		<p>2.2 Automatisk formattering af litteraturliste</p>
+		<pre><code python data-trim data-noescape>
+			Fornavn = "Rachel"
+			Efternavn = "Bawden"
+			Årstal = 2017
+			Titel = "Machine Translation, it’s a question of style, innit?"
+			Konference = "Proceedings of the 2017 Conference on Empirical Methods in Natural Language Processing"
+			Start = 2507
+			Slut = 2512
+			
+
+			BibliografiStreng = BibliographyGenerator(Fornavn, Efternavn, Årstal, 
+													  Titel, Konference, Start, Slut)
+			
+			print("Bibliography")
+			print("=============")													
+			print(BibliografiStreng)
+		</code></pre>
+
 
 	</section>
 	<section style="font-size: smaller;text-align: left;">
 		<p>Spørgsmål</p>
 		<ol> 
-			<li>Hvorfor gemmer vi outputtet fra funktionen i en ny variabel? Kunne vi ikke bare have nøjes med at printe outputtet?</li>
+			<li>Hvorfor er det praktisk at bruge en funktion i stedet for at formatterer strengen med det samme?</li>
 			<li>Hvorfor er type-kontrakten vigtig?</li>
 			<li>Dette er en simpel formattering af et punkt i en litteraturliste. Har I nogen idéer til hvordan den ville kunne udvides?
-				<ul>
-					<li>Flere forfattere</li>
-					<li>Andre formater (hvor forfatterens fornavn eksempelvis skal forkortes)</li>
-				</ul>
 			</li>
 		</ol>
 
