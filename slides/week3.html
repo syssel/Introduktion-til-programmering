@@ -1,7 +1,7 @@
 ---
 layout: slide
 title: "Uge 3 - Lists"
-solutions: "hide"
+solutions: "show"
 ---
 
 	<section>
@@ -41,6 +41,53 @@ solutions: "hide"
 			</ul>
 		</div>
 		
+	</section>
+
+	<section style="font-size: smaller;">
+	<p>Eksempel: bibliotek.py</p>
+		
+		<pre><code python data-trim data-noescape>
+
+		def MinimumEditDistance(s1, s2):
+			""" (str, str) -> int
+				Calculate the distance
+				between the strings s1 and s2 """
+			difference = 0
+			return difference
+
+
+		def Text2Words(text):
+			""" (str) -> list
+				Splits the input text
+				into tokens
+			"""
+
+			return text.split()
+
+
+		def ReadTextFile(fpath):
+			""" (str) -> str
+				Reads textfile and returns str object
+			"""
+
+			return ""
+
+
+		print("Her er værdien der gemmer sig i variablen __name__: ", __name__)
+		print(type(__name__))
+		print()
+
+		if __name__ == "__main__":
+			print("Testing of the different functions in the module")
+			print("\t Tokenizer: ")
+			teststring = "Jeg er en streng af ord"
+			print("\t\t Input: ", teststring)
+			print("\t\t Output: ", Text2Words(teststring))
+
+
+
+	
+		</code></pre>
 	</section>
 
 	<section>
@@ -222,7 +269,7 @@ solutions: "hide"
 					<li>Giv den hurtigste rytter 8 bonussekunder (træk 8 sekunder fra hans tid) da han kom først over strejen</li>
 					<li>Giv nummer otte på etapen 20 strafsekunder (læg 20 sekunder til hans tid) da han sad på hjul af en bil</li>
 					<li>Diskvalificer den sidste rytter (fjern hans tid fra listen) da han ikke nåede tidsgrænsen</li>
-					<li>Summen af alle rytternes tider bør nu være <icode>2585</icode>)
+					<li>Summen af alle rytternes tider bør nu være <icode>2585</icode>
 				</ul>
 			</li>
 		</ol>
@@ -233,7 +280,7 @@ solutions: "hide"
 		
 		<pre><code python data-trim data-noescape>
 
-		def sec2min(sec):
+		def Sec2Min(sec):
 			""" float -> float
 			Converts seconds to minutes
 			"""
@@ -249,7 +296,7 @@ solutions: "hide"
 		
 		<pre><code python data-trim data-noescape>
 
-		def sec2min(sec):
+		def Sec2Min(sec):
 			""" float -> float
 			Converts seconds to minutes
 			"""
