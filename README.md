@@ -6,7 +6,7 @@ __Uge 1 (d. 6. september)__ Variables \[[slides](/slides/week1.html)\]
 
 __Uge 2 (d. 13 september)__ Strings & functions \[[slides](/slides/week2.html)\]
 
-__Uge 3 (d. 20. september)__ Lists
+__Uge 3 (d. 20. september)__ Lists \[[slides](/slides/week3.html)\]
 
 __Uge 4 (d. 27. september)__ Methods and loops
 
