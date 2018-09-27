@@ -8,7 +8,7 @@ __Uge 2 (d. 13 september)__ Strings & functions \[[slides](/slides/week2.html)\]
 
 __Uge 3 (d. 20. september)__ Lists \[[slides](/slides/week3.html)\]
 
-__Uge 4 (d. 27. september)__ Methods & loops
+__Uge 4 (d. 27. september)__ Methods & loops \[[slides](/slides/week4.html)\]
 
 __Uge 5 (d. 4. oktober)__ Reading and writing files
 
