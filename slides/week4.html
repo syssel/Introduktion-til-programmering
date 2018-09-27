@@ -1,7 +1,7 @@
 ---
 layout: slide
 title: "Uge 4 - Loops & methods"
-solutions: "hide"
+solutions: "show"
 ---
 
 	<section>
@@ -53,16 +53,17 @@ solutions: "hide"
 	</section>
 
 	<section style="font-size: smaller;" class="solution">
-			<pre><code data-trim data-noescape class="python">
-				i = 0
-				while i < len(movies):
-					print(movies[i], "\t", ratings[i])
-					i += 1
+		<p>1.1 Data (løsning)</p>
+		<pre><code data-trim data-noescape class="python">
+			i = 0
+			while i < len(movies):
+				print(movies[i], "\t", ratings[i])
+				i += 1
 
-				print()
-				for i in range(len(movies)):
-					print(movies[i], "\t", ratings[i])
-			</code></pre>
+			print()
+			for i in range(len(movies)):
+				print(movies[i], "\t", ratings[i])
+		</code></pre>
 	</section>	
 
 	<section style="font-size: smaller;">
@@ -79,6 +80,7 @@ solutions: "hide"
 	</section>
 
 	<section style="font-size: smaller;" class="solution">
+			<p>1.2 Ranking (løsning)</p>
 			<pre><code data-trim data-noescape class="python">
 				# Highest rated movie
 				top_rating = max(ratings)
@@ -98,6 +100,7 @@ solutions: "hide"
 
 
 	<section style="font-size: smaller;" class="solution">
+		<p>1.2 Ranking (løsning)</p>
 			<pre><code data-trim data-noescape class="python">
 				# Ranking
 				# Top 10 rated imdb movies
@@ -157,6 +160,7 @@ solutions: "hide"
 	</section>
 
 	<section style="font-size: smaller;" class="solution">
+			<p>2.1 Filmsøgning (løsning)</p>
 			<pre><code data-trim data-noescape class="python">
 				# Top 10 rated imdb movies
 				movies = ["Fight Club", "The Godfather", "Schindler's List", "The Dark Knight", "The Lord of the Rings: The Return of the King", "The Shawshank Redemption", "The Godfather: Part II ", "Pulp Fiction", "12 Angry Men", "The Good, the Bad and the Ugly"]
@@ -170,7 +174,7 @@ solutions: "hide"
 					if ui.lower() == stopword.lower():
 						break
 
-					if ui.lower() not in [m.lower() for m in movies]:
+					if ui not in movies:
 						print("Filmen er desværre ikke i listen. Prøv igen!")
 
 					else:
@@ -199,7 +203,7 @@ solutions: "hide"
 	</section>	
 
 	<section style="font-size: smaller;">
-		<!--<p>Data/p>-->
+		
 			<pre><code data-trim data-noescape class="python">
 				def MinimumEditDistance(s1, s2):
 					""" (str, str) -> int
@@ -230,7 +234,7 @@ solutions: "hide"
 					for j in range(1, m+1):
 						D[0][j] = D[0][j-1] + insertion_cost
 
-					# Compute cost
+					# Compute distance
 					for i in range(1, n+1):
 						for j in range(1, m+1):
 							del_cost = D[i-1][j] + deletion_cost
@@ -249,6 +253,7 @@ solutions: "hide"
 	</section>
 
 	<section style="font-size: smaller;" class="solution">
+		<p>2.2 Omtrendt søgning (løsning)</p>
 			<pre><code data-trim data-noescape class="python">
 				# Top 10 rated imdb movies
 				movies = ["Fight Club", "The Godfather", "Schindler's List", "The Dark Knight", "The Lord of the Rings: The Return of the King", "The Shawshank Redemption", "The Godfather: Part II ", "Pulp Fiction", "12 Angry Men", "The Good, the Bad and the Ugly"]
@@ -262,7 +267,7 @@ solutions: "hide"
 					if ui.lower() == stopword.lower():
 						break
 
-					if ui.lower() not in [m.lower() for m in movies]:
+					if ui not in movies:
 						
 						distances = []
 
