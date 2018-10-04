@@ -24,6 +24,7 @@
 			link.href = window.location.search.match( /print-pdf/gi ) ? '../revealjs/css/print/pdf.css' : '../revealjs/css/print/paper.css';
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
+
 	</head>
 
 	<body>
@@ -48,11 +49,17 @@
 			// - https://github.com/hakimel/reveal.js#configuration
 			// - https://github.com/hakimel/reveal.js#dependencies
 			Reveal.initialize({
+				math: {
+						MathJax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML',
+						config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+					},
+
 				dependencies: [
 					{ src: '../revealjs/plugin/markdown/marked.js' },
 					{ src: '../revealjs/plugin/markdown/markdown.js' },
 					{ src: '../revealjs/plugin/notes/notes.js', async: true },
-					{ src: '../revealjs/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+					{ src: '../revealjs/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../revealjs/plugin/math/math.js', async: true }
 				],
 
 				// Push each slide change to the browser history
