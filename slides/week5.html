@@ -180,7 +180,7 @@ solutions: "hide"
 				<li>Hint: Brug en string method til at dele linjerne op i 'kolonner'</li>
 			</ul>
 			</li>
-			<li>(bonus) Lav en liste for hver 'kolonne' (Navn, Køn, Overlevet-eller-ej) og gem værdierne for alle passagererne deri
+			<li>(bonus) Lav en liste for 'kolonnen' <icode>survived</icode> og gem værdier for alle passagererne deri (hvorvidt de overlevede eller ej)
 				<ul>
 					<li>Hvor mange passagerer var med på båden?</li>
 					<li>Hvor mange overlevede?</li>
@@ -206,11 +206,7 @@ solutions: "hide"
 		header = f.readline()
 
 		# Data
-		col_id = []
 		col_survived = []
-		col_class = []
-		col_name = []
-		col_sex = []
 
 		for line in f:
 			# Values
@@ -224,15 +220,12 @@ solutions: "hide"
 
 			print(idx, name, classx)
 
-			col_id.append(idx)
 			col_survived.append(survived)
-			col_class.append(classx)
-			col_name.append(name)
-			col_sex.append(sex)
+
 
 		f.close()
 
-		n_passengers = len(col_id)
+		n_passengers = len(col_survived)
 		n_survived = col_survived.count("0")
 
 		print("Amount of survivers: ", n_survived, "({}%)".format(int(n_survived/n_passengers*100)))
