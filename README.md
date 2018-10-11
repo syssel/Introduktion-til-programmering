@@ -12,7 +12,7 @@ __Uge 4 (d. 27. september)__ Methods & loops \[[slides](/slides/week4.html)\]
 
 __Uge 5 (d. 4. oktober)__ Reading and writing files \[[slides](/slides/week5.html)\]
 
-__Uge 6 (d. 11. oktober)__ Booleans
+__Uge 6 (d. 11. oktober)__ Booleans \[[slides](/slides/week6.html)\]
 
 _Efterårsferie_
 

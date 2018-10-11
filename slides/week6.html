@@ -1,0 +1,104 @@
+---
+layout: slide
+title: "Uge 6 - Booleans"
+solutions: "hide"
+---
+
+<section>
+	<p>Program for i dag</p>
+	<ul style="font-size: smaller;">
+		<li>Vi skal lave øvelser med
+			<ul style="font-size: smaller;">
+				<li>Booleans</li>
+				<li>Repetition (nested for-loops, enumerate, write) </li>
+			</ul>
+		</li>
+		<li>Opgave 1: Frugtklassifikation</li>
+		<li>Repetitionsøvelser</li>
+	</ol>
+	</p>
+</section>
+
+<section>
+	<p>Opgave 1: Frugtklassifikation</p>
+	<p style="font-size: smaller;">
+		I denne opgave skal vi lave en funktion til at kunne bestemme forskellige typer frugt
+	</p>
+	<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/A_fruit_stand_in_Mauritius.jpg/640px-A_fruit_stand_in_Mauritius.jpg">
+</section>
+
+
+<section>
+	<p>Decision tree - type af frugt</p>
+	<img src="FruitsDecisionTree.svg"/>
+</section>
+<section>
+	<p>1.1 Funktion</p>
+	<ol style="font-size: smaller;">
+		<li>Lav en funktion <icode>ClassifyFruit</icode>, som tager informationer om en frugt som input og som outputter navnet på frugten</li>
+		<li>Brug logikken fra decision tree'et på det sidste slide så funktionen kan klassificere
+			<ul>
+				<li>vandmelon, æble, vindrue, grape, citron og kirsebær</li>
+			</ul>
+		</li>
+		<li>Brug funktionen til at bestemme frugten nedenfor:
+			<pre><code data-trim data-noescape class="python">
+				# Unknown fruit
+				round = True
+				color = "yellow"
+				size  = "large" 
+				sweet = False
+			</code></pre>
+		</li>
+	</ol>
+</section>
+
+<section>
+	<p>1.2 Brugerinput</p>
+	<ol style="font-size: smaller;">
+		<li>Lad brugeren indtaste værdier for en frugt og bestem frugten vha. funktionen fra sidste slide</li>
+		<li>Udvid funktionen til også at kunne bestemme agurker</li>
+		<li>Giv brugeren en advarsel hvis en agurk er indtastet</li>
+	</ol>
+</section>
+
+<section>
+	<p>Repetition</p>
+	<ol style="font-size: smaller;">
+		<li>Hvad vil outputtet af nedenstående kode være?
+			<pre><code data-trim data-noescape class="python">
+				tokens = ["(eksempel)", "20'er", "24-timer", "f.eks."]
+				for w in tokens:
+					print(w)
+					for c in w:
+						if not(c.isalpha() or c.isnumeric()):
+							print(c)
+					print()
+			</code></pre>
+		</li>
+	</ol>	
+</section>
+
+<section>
+	<ol style="font-size: smaller;" start="2">
+		<li>Lav en liste i python med en række sætningner i
+			<ul>
+				<li>Brug <icode>enumerate</icode> til at printe alle sætningerne fra listen og deres placeringen i listen</li>
+				<li>Gør det samme med alle ordene fra sætningerne (men med placering i sætningen)</li>
+				<li>Skriv resultaterne til en fil i stedet for at printe</li>
+			</ul>
+		</li>
+	</ol>	
+</section>
+
+<section>
+	<ol style="font-size: smaller;" start="3">
+		<li>Indlæs filen <icode>fruits.txt</icode> i python
+			<ul>
+				<li>Hver linje svarer til én frugt</li>
+				<li>Alle informationer omkring frugten er adskilt af <icode>\t</icode></li>
+				<li>Brug funktionen fra Øvelse 1 til at bestemme typerne på alle frugterne</li>
+			</ul>
+		</li>
+	</ol>	
+</section>
