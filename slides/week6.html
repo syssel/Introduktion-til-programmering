@@ -1,7 +1,7 @@
 ---
 layout: slide
 title: "Uge 6 - Booleans"
-solutions: "hide"
+solutions: "show"
 ---
 
 <section>
@@ -44,13 +44,72 @@ solutions: "hide"
 		<li>Brug funktionen til at bestemme frugten nedenfor:
 			<pre><code data-trim data-noescape class="python">
 				# Unknown fruit
-				round = True
+				shape_round = True
 				color = "yellow"
 				size  = "large" 
-				sweet = False
+				taste_sweet = False
 			</code></pre>
 		</li>
 	</ol>
+</section>
+
+<section style="font-size: smaller;" class="solution">
+		<p>1.1 Funktion (løsning)</p>
+		<pre><code data-trim data-noescape class="python">
+			def ClassifyFruit(shape_round, color, size, sweet):
+			    """ (bool, str, str, str, bool) -> str
+			        Predicts what kind of fruit the input is
+			        through a number of rules
+			    """
+			    
+			    # Set default to unkown
+			    fruit = "Unknown"
+
+			    # Green fruits
+			    if color == "green" and size == "large":
+			        if size == "large":
+			            fruit = "watermelon"
+			        elif size == "medium":
+			            fruit = "apple"
+			        else:
+			            fruit = "grape"
+
+			    # Yellow fruits
+			    elif color == "yellow":
+			        if shape_round:
+			            if size == "small":
+			                fruit = "lemon"
+			            else:
+			                fruit = "grape fruit"
+			        else:
+			            fruit = "banana"
+
+			    # Red fruits
+			    elif color == "red":
+			        if size == "small":
+			            if sweet:
+			                fruit = "cherry"
+			            else:
+			                fruit = "grape"
+			        else:
+			            fruit = "cherry"
+
+			    return fruit
+		</code></pre>
+</section>
+
+<section style="font-size: smaller;" class="solution">
+		<p>1.1 Funktion (løsning)</p>
+		<pre><code data-trim data-noescape class="python">
+			# Unknown fruit
+			shape_round = True
+			color = "yellow"
+			size  = "large" 
+			taste_sweet = False
+
+			predicted = ClassifyFruit(shape_round, color, size, taste_sweet)
+			print(predicted)
+		</code></pre>
 </section>
 
 <section>
@@ -60,6 +119,20 @@ solutions: "hide"
 		<li>Udvid funktionen til også at kunne bestemme agurker</li>
 		<li>Giv brugeren en advarsel hvis en agurk er indtastet</li>
 	</ol>
+</section>
+
+<section style="font-size: smaller;" class="solution">
+		<p>1.2 Brugerinput (løsning)</p>
+		<pre><code data-trim data-noescape class="python">
+			print("Answer the follwing question and the type of fruit will be estimated")
+			shape_round = bool(int(input("Is it round? (1 for yes, 0 for no): ")))
+			color = input("What color is it?: ")
+			size  = input("What size is it?: ")
+			taste_sweet = bool(int(input("Is the it sweet? (1 for yes, 0 for no): ")))
+
+			predicted = ClassifyFruit(shape_round, color, size, taste_sweet)
+			print("Predicted fruit:", predicted)
+		</code></pre>
 </section>
 
 <section>
@@ -91,6 +164,28 @@ solutions: "hide"
 	</ol>	
 </section>
 
+<section style="font-size: smaller;" class="solution">
+		<p>Løsning</p>
+		<pre><code data-trim data-noescape class="python">
+			sentences = ["Her er den første sætning", "Dette er den anden sætning", "En fin liste tre sætninger"]
+			w = open("sentences.txt", "w")
+
+			for i, sentence in enumerate(sentences):
+			    print(i, sentence)
+			    w.write(" ".join([str(i), sentence])+"\n")
+			    
+			    for j, word in enumerate(sentence.split()):
+			        print(j, word)
+			        w.write(" ".join([str(j), word])+"\n")
+			   
+			    print()
+			    w.write("\n")
+
+			w.close()
+		</code></pre>
+</section>
+
+
 <section>
 	<ol style="font-size: smaller;" start="3">
 		<li>Indlæs filen <icode>fruits.txt</icode> i python
@@ -101,4 +196,27 @@ solutions: "hide"
 			</ul>
 		</li>
 	</ol>	
+</section>
+
+<section style="font-size: smaller;" class="solution">
+		<p>Løsning</p>
+
+		<pre><code data-trim data-noescape class="python">
+			with open("fruits.txt") as f:
+			    header = f.readline()
+			    separator = "\t"
+
+			    for i, line in enumerate(f):
+			        line = line.strip()
+			        
+			        values = line.split(separator)
+			        size = values[0].strip()
+			        color = values[1].strip()
+			        shape_round = values[2].strip()
+			        taste_sweet = values[3].strip()
+
+			        predicted = ClassifyFruit(shape_round, color, size, taste_sweet)
+
+			        print(i, predicted)
+		</code></pre>        
 </section>
