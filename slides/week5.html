@@ -1,7 +1,7 @@
 ---
 layout: slide
 title: "Uge 5 - Reading and writing files"
-solutions: "hide"
+solutions: "show"
 ---
 
 	<section>
@@ -63,22 +63,14 @@ solutions: "hide"
 	<section style="font-size: smaller;" class="solution">
 		<p>1.1 Indlæsning af tekster (løsning)</p>
 		<pre><code data-trim data-noescape class="python">
-			import os
+			path = "tekster\\wiki.txt"  # Windows
+			path = "tekster/wiki.txt"   # Mac/Linux
 
-			cwd = os.getcwd()
-			path = "\\tekster\\wiki.txt" # Windows
-			path = "/tekster/wiki.txt"   # Mac
-
-			path = cwd + path
-
-			f = open(path, "r")
-
-			for sentence in f:
-				sentence  = sentence.strip()
-				words = sentence.split()
-				print(sentence, len(words))
-
-			f.close()
+			with open(path, "r") as f:
+			    for sentence in f:
+			        sentence  = sentence.strip()
+			        words = sentence.split()
+			        print(sentence, len(words))
 		</code></pre>
 	</section>	
 
@@ -101,26 +93,50 @@ solutions: "hide"
 	<section style="font-size: smaller;" class="solution">
 		<p>1.2 LIX-tal (løsning)</p>
 		<pre><code data-trim data-noescape class="python">
-			n_sentences = 0
-			n_words = 0
-			n_long = 0
+			def calculateLIX(text):
+			    """ Calculates the LIX number of a text.
+			        Expects sentences to be separated by newline 
+			        and words to be separated by space.
+			    """
+			    n_sentences = 0
+			    n_words = 0
+			    n_long = 0
 
-			for sentence in f:
-				sentence  = sentence.strip()
-				words = sentence.split()
-				print(sentence, len(words))
+			    # Iterate over all the sentences in the text
+			    for sentence in text:
+			        # Count sentences
+			        n_sentences += 1
+			        
+			        sentence  = sentence.strip()
+			        words = sentence.split()
 
-				for word in words:
-					if len(word) > 6:
-						n_long += 1
-					n_words += 1
-				n_sentences += 1
-				
-			f.close()
-			lix = (n_sentences/n_words)+((n_long*100)/n_words)
-			print("LIX:", lix)
+			        # Count words
+			        n_words += len(words)
+			        
+			        # Iterate over all of the words in the individual sentences
+			        for word in words:
+			            
+			            # Count long words
+			            if len(word) > 6:
+			                n_long += 1
+
+			    lix = (n_sentences/n_words)+((n_long*100)/n_words)
+
+			    return lix
 		</code></pre>
 	</section>
+
+	<section style="font-size: smaller;" class="solution">
+		<p>1.2 LIX-tal (løsning)</p>
+		<pre><code data-trim data-noescape class="python">
+			path = "tekster\\wiki.txt"  # Windows
+			path = "tekster/wiki.txt"   # Mac
+
+			with open(path, "r") as f:
+			    lix = calculateLIX(f)
+			    print("LIX:", lix)
+		</code></pre>
+	</section>	
 
 
 	<section>
@@ -192,45 +208,42 @@ solutions: "hide"
 	<section style="font-size: smaller;" class="solution">
 		<p>2.1 Indlæsning af data (løsning)</p>
 		<pre><code data-trim data-noescape class="python">
-		import os
+			path = "data\\titanic.txt" # Windows
+			path = "data/titanic.txt"   # Mac
 
-		cwd = os.getcwd()
-		path = "\\data\\titanic.txt" # Windows
-		path = "/data/titanic.txt"   # Mac
+			separator = ";"
 
-		path = cwd + path
+			f = open(path, "r")
+			header = f.readline()
 
-		separator = ";"
+			# Data
+			col_survived = []
 
-		f = open(path, "r")
-		header = f.readline()
+			# Read every line in the document
+			for line in f:
+				
+				# Unpack all of the values
+				values = line.split(separator)
 
-		# Data
-		col_survived = []
+				idx = values[0].strip()
+				survived = values[1].strip()
+				classx = values[2].strip()
+				name = values[3].strip()
+				sex = values[4].strip()
 
-		for line in f:
-			# Values
-			values = line.split(separator)
+				print(idx, name, classx)
 
-			idx = values[0].strip()
-			survived = values[1].strip()
-			classx = values[2].strip()
-			name = values[3].strip()
-			sex = values[4].strip()
-
-			print(idx, name, classx)
-
-			col_survived.append(survived)
+				col_survived.append(survived)
 
 
-		f.close()
+			f.close()
 
-		n_passengers = len(col_survived)
-		n_survived = col_survived.count("0")
+			n_passengers = len(col_survived)
+			n_survived = col_survived.count("0")
 
-		print("Amount of survivers: ", n_survived, "({}%)".format(int(n_survived/n_passengers*100)))
+			print("Amount of survivers: ", n_survived, "({}%)".format(int(n_survived/n_passengers*100)))
 		</code></pre>
-	</section>	
+	</section>
 
 
 	<section style="font-size: smaller;">
@@ -245,26 +258,22 @@ solutions: "hide"
 	<section style="font-size: smaller;" class="solution">
 		<p>2.2 Udtrækning af data (løsning)</p>
 		<pre><code data-trim data-noescape class="python">
-			import os
+			path = "data\\titanic.txt" # Windows
+			path = "data/titanic.txt"   # Mac
 
-			cwd = os.getcwd()
-			path = "\\data\\titanic.txt" # Windows
-			path = "/data/titanic.txt"   # Mac
-			path = cwd + path
-
-			path_to_new = "\\data\\titanic_survivors.txt" # Windows
-			path_to_new = "/data/titanic_survivors.txt" # Mac
-			path_to_new = cwd + path_to_new
+			path_to_new = "data\\titanic_survivors.txt" # Windows
+			path_to_new = "data/titanic_survivors.txt" # Mac
 
 			f = open(path, "r")
-			wr = open(path_to_new, "w")
+			w = open(path_to_new, "w")
 
 			header = f.readline()
 			separator = ";"
-			wr.write(header)
+
+			# Write header
+			w.write(header)
 
 			for line in f:
-				# Values
 				values = line.split(separator)
 
 				idx = values[0].strip()
@@ -273,11 +282,12 @@ solutions: "hide"
 				name = values[3].strip()
 				sex = values[4].strip()
 
+				# Write line to file if survived
 				if survived == "1":
-					wr.write(line)
+					w.write(line)
 
-			wr.close()
+			w.close()
 			f.close()
 		</code></pre>
-	</section>		
+	</section>
 
