@@ -18,7 +18,7 @@ _Efterårsferie_
 
 __Uge 7 (d. 25. oktober)__ Arbejde med opgave 1
 
-__Uge 8 (d. 1. november)__ Dictionaries
+__Uge 8 (d. 1. november)__ Sets & dictionaries \[[slides](/slides/week8.html)\]
 
 __Uge 9 (d. 8. november)__ HTML & XML
 

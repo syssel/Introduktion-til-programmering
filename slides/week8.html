@@ -1,0 +1,70 @@
+---
+layout: slide
+title: "Uge 8 - Sets & dictionaries"
+solutions: "hide"
+---
+
+<section>
+	<p>Program for i dag</p>
+	<ul style="font-size: smaller;">
+		<li>Vi skal lave øvelser med
+			<ul style="font-size: smaller;">
+				<li>Sets</li>
+				<li>Dictionaries</li>
+			</ul>
+		</li>
+		<li>Opgave 1: Simpel sprogidentifikation</li>
+		<li>Opgave 2: Ordfrekvensliste</li>
+	</ol>
+	</p>
+</section>
+
+
+<section>
+	<p>Opgave 1: Simpel sprogidentifikation</p>
+	<p style="font-size: smaller;">
+		I denne skal vi lave en simpel funktion til at kunne identificere hvilket sprog et ord er skrevet på ud fra de bogstaver der forekommer i ordet
+	</p>
+	<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Alien_decoder_Futurama.svg/592px-Alien_decoder_Futurama.svg.png" style="background-color:white;">
+</section>
+
+<section>
+	<p>1.1 Sprogfiler</p>
+	<ol style="font-size: smaller;">
+		<li>Indlæs filer <icode>danish_sample.txt</icode> og <icode>french_sample.txt</icode> i python</li>
+		<li>Hvor mange forskellige tegn har de enkelte sprog?</li>
+		<li> Hvor mange bogstaver har dansk, som fransk ikke har?</li>
+		<li> Samme spørgsmål som ovenfor bare for fransk</li>
+		<li> Hvor mange tegn har dansk og fransk til fælles?</li>
+	</ol>
+</section>
+
+<section style="font-size: smaller">
+	<p>1.2 Sprogidentifikation</p>
+	<ol style="font-size: smaller;">
+		<li>Forsøg at lav en funktion, som finder sproget på et ord:
+			<ul>
+				<li>Funktionen skal tage et ord som input og outputte det sprog som den tror ordet er skrevet på</li>
+			</ul>
+		</li>
+		<li> Brug informationer omrking unikke tegn for de enkelte sprog til at kunne bestemme sproget på ordet:
+			<ul>
+				<li>Hvis ordet indeholder et tegn som kun eksisterer på dansk, må ordet være dansk</li> 
+				<li>Samme logik gælder for fransk</li>
+				<li> Hvis ordet ikke indeholder nogen tegn som er unikke inden for et af de kendte sprog, kan vi ikke sige hvilket sprog ordet er skrevet på
+			</ul>
+		</li>
+		<li> Brug funktionen til at bestemme sproget på ordene fra filen <icode>unknownwords.txt</icode></li>
+	</ol>
+</section>
+
+<section>
+	<p>Opgave 2: Ordfrekvenslister</p>
+	<ol style="font-size: smaller;">
+		<li>Indlæs filen <icode>enchanted.txt</icode> i python</li>
+		<li>Brug en dictionary til at lave en frekvensliste over ordene i teksten</li>
+		<li>Hvor mange gange forekommet ordet 'enchanted'</li>
+		<li>Hvor mange ord forekommer kun en enkelt gang i teksten?</li>
+		<li>Udskriv resultatet til en fil</li>				
+	</ol>
+</section>
