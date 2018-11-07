@@ -1,7 +1,7 @@
 ---
 layout: slide
 title: "Uge 8 - Sets & dictionaries"
-solutions: "hide"
+solutions: "show"
 ---
 
 <section>
@@ -39,6 +39,39 @@ solutions: "hide"
 	</ol>
 </section>
 
+<section style="font-size: smaller;" class="solution">
+		<p>1.1 Sprogfiler (løsning)</p>
+		<pre><code data-trim data-noescape class="python">
+			# Read the language samples
+			with open("tekster/danish_sample.txt", "r") as f:
+				danish_sample = f.read()
+
+			with open("tekster/french_sample.txt", "r") as f:
+				french_sample = f.read()
+
+			# Get the set of characters in the two samples
+			danish = set(danish_sample.lower())
+			french = set(french_sample.lower())
+
+			print("Number of characters in Danish:", len(danish))
+			print("Number of characters in French:", len(french))
+
+			# Get the set of characters unique to Danish and French, respectively,
+			# i.e., the difference between the sets
+			only_danish = danish.difference(french) # Equivalent to the expression danish - french
+			only_french = french.difference(danish) # Equivalent to the expression french - danish
+
+			print("Danish has {} characters that French doesn't".format(str(len(only_danish))), only_danish)
+			print("French has {} characters that Danish doesn't".format(str(len(only_french))), only_french)
+
+			# Get the set of characters that exist in both Danish and French,
+			# i.e., the intersection between the sets
+			both = danish.intersection(french) # Equivalent to the expression danish | french
+
+			print("French and Danish have {} characters in common".format(str(len(both))))
+		</code></pre>
+</section>
+
 <section style="font-size: smaller">
 	<p>1.2 Sprogidentifikation</p>
 	<ol style="font-size: smaller;">
@@ -58,6 +91,39 @@ solutions: "hide"
 	</ol>
 </section>
 
+
+<section style="font-size: smaller;" class="solution">
+		<p>1.2 Sprogidentifikation (løsning)</p>
+		<pre><code data-trim data-noescape class="python">
+			def ClassifyLanguage(word, danish=set(), french=set()):
+				""" Naive language classifier, that identifies the language
+					of a word by considering its characters, comparing this 
+					set characters to that of language samples given as input.
+					Can classify a word as either Danish or French.
+				"""
+
+				# Get the set of unique characters of the input word
+				input_chars = set(word)
+
+				# Check if there is an intersection between the characters of the input word
+				# and Danish letters
+				if input_chars & danish: 	# equivalent to input_chars.intersection(danish)
+					return "Danish"
+				# Check if there is an intersection between the characters of the input word
+				# and French letters
+				elif input_chars & french: 	# equivalent to input_chars.intersection(french)
+					return "French"
+				else:
+					return "unknown"
+
+			with open("tekster/unkownwords.txt", "r") as f:
+				for word in f:
+					word = word.strip()
+					language = ClassifyLanguage(word.lower(), only_danish, only_french)
+					print("{} is {}".format(word, language))
+		</code></pre>
+</section>
+
 <section>
 	<p>Opgave 2: Ordfrekvenslister</p>
 	<ol style="font-size: smaller;">
@@ -68,3 +134,48 @@ solutions: "hide"
 		<li>Udskriv resultatet til en fil</li>				
 	</ol>
 </section>
+
+
+
+<section style="font-size: smaller;" class="solution">
+		<p>2 Ordfrekvenslister (løsning)</p>
+		<pre><code data-trim data-noescape class="python">
+			# Initialize frequency dictionary
+			freqdict = dict()
+
+			with open("tekster/enchanted.txt", "r", encoding="utf8") as f:
+				for line in f:
+					line = line.strip()
+
+					for word in line.split():
+						# If it is the first time we observe a word
+						# we need to add the word to the freqdict
+
+						if word not in freqdict:
+							freqdict[word] = 1
+
+						# If we have observed the word before,
+						# we can update the value of the entry
+						
+						else:
+							freqdict[word] += 1
+
+			# Query frequency of words
+			query = "enchanted"
+
+			n = freqdict.get(query, 0)
+
+			print("'{q}' was observed {n} time{pl}".format(q=query, n=str(n), pl="s" if n>1 or n==0 else ""))
+
+			# Count words that only occur once
+			only_once = list(freqdict.values()).count(1)
+			print("{} words was observed once".format(str(only_once)))
+
+
+			# Write dicionary to file
+			with open("tekster/freqdict.txt", "w") as w:
+				for word, freq in freqdict.items():
+					w.write("\t".join([word, str(freq)])+"\n")
+		</code></pre>
+</section>
+
