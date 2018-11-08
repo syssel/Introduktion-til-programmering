@@ -57,18 +57,18 @@ solutions: "show"
 			print("Number of characters in French:", len(french))
 
 			# Get the set of characters unique to Danish and French, respectively,
-			# i.e., the difference between the sets
+			# i.e. the difference between the sets
 			only_danish = danish.difference(french) # Equivalent to the expression danish - french
 			only_french = french.difference(danish) # Equivalent to the expression french - danish
 
-			print("Danish has {} characters that French doesn't".format(str(len(only_danish))), only_danish)
-			print("French has {} characters that Danish doesn't".format(str(len(only_french))), only_french)
+			print("Danish has {} characters that French doesn't".format(len(only_danish)), only_danish)
+			print("French has {} characters that Danish doesn't".format(len(only_french)), only_french)
 
 			# Get the set of characters that exist in both Danish and French,
 			# i.e., the intersection between the sets
 			both = danish.intersection(french) # Equivalent to the expression danish | french
 
-			print("French and Danish have {} characters in common".format(str(len(both))))
+			print("French and Danish have {} characters in common".format(len(both)))
 		</code></pre>
 </section>
 
@@ -150,22 +150,20 @@ solutions: "show"
 					for word in line.split():
 						# If it is the first time we observe a word
 						# we need to add the word to the freqdict
-
 						if word not in freqdict:
 							freqdict[word] = 1
-
 						# If we have observed the word before,
 						# we can update the value of the entry
-						
 						else:
 							freqdict[word] += 1
 
 			# Query frequency of words
-			query = "enchanted"
+			query = "enchasdasdanted"
 
 			n = freqdict.get(query, 0)
 
-			print("'{q}' was observed {n} time{pl}".format(q=query, n=str(n), pl="s" if n>1 or n==0 else ""))
+
+			print("'{q}' was observed {n} time{pl}".format(q=query, n=n, pl="s" if n != 1 else ""))
 
 			# Count words that only occur once
 			only_once = list(freqdict.values()).count(1)
