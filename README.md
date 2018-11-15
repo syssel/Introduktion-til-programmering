@@ -22,7 +22,7 @@ __Uge 8 (d. 1. november)__ Sets & dictionaries \[[slides](/slides/week08.html)\]
 
 __Uge 9 (d. 8. november)__ Dictionaries (fortsat) \[[slides](/slides/week09.html)\]
 
-__Uge 10 (d. 15. november)__ XML
+__Uge 10 (d. 15. november)__ HTML \[[slides](/slides/week10.html)\]
 
 __Uge 11 (d. 22. november)__ Terminal & kommandolinje
 
