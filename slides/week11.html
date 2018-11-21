@@ -1,0 +1,333 @@
+---
+layout: slide
+title: "Uge 11 - XML"
+solutions: "hide"
+---
+
+<section>
+	<p>Program for i dag</p>
+	<ul style="font-size: smaller;">
+		<li>Vi skal lave øvelser med
+			<ul style="font-size: smaller;">
+				<li>XML</li>
+			</ul>
+		</li>
+		<li>Men først:
+			<ul style="font-size: smaller;">
+				<li>Opsamling fra sidst</li>
+				<li>Eksamenopgave 1: Funktioner</li>
+			</ul>
+		</li>
+	</ul>
+	</p>
+</section>
+
+<section>
+	<p>Opgave 1: Wiki-beskrivelser af de truede sprog</p>
+
+	<ul style="font-size: smaller;">
+		<li>Tage udgangspunkt i listen over truede sprog i europa, <icode>endangered_europe.csv</icode>
+		</li>
+		<li>Bruge <icode>urllib</icode> og <icode>bs4</icode> til at skrape de første to paragraffer af Wikipedia
+		</li>
+	</ul>
+
+</section>
+
+
+<section>
+	<p>Eksamenopgaver 1</p>
+
+	<ul style="font-size: smaller;">
+		<li>Opgave 4 <div style="font-size: smaller;"><u>Skriv en funktion</u>, som kan sammenligne to lister</div></li>
+		<li>Opgave 5 <div style="font-size: smaller;"><u>Skriv en funktion</u>, som lægger to lister sammen</div></li>
+		<li>Opgave 7 <div style="font-size: smaller;"><u>Skriv en funktion</u>, som udskriver alle de ulige tal fra en liste</div></li>
+	</ul>
+
+</section>
+
+
+<section data-transition="none">
+	<ol style="font-size: smaller;">
+		<li>Skriv en funktion!</li>
+		<li style="color:#3f3f3f;">En funktion skal virke generelt - tag ikke udgangspunkt i variable uden for funktionen</li>
+		<li style="color:#3f3f3f;">Pas på - lister er mutable</li>
+	</ul>
+</section>
+
+<section data-transition="none">
+	<ol style="font-size: smaller;">
+		<li>Skriv en funktion!</li>
+		<li>En funktion skal virke 'generelt' - tag ikke udgangspunkt i variable uden for funktionen</li>
+		<li style="color:#3f3f3f;">Pas på - lister er mutable</li>
+	</ul>
+</section>
+
+<section style="font-size: smaller;" data-transition="none">
+		<pre><code data-trim data-noescape class="python">
+
+			numbers = [1, 2, 3, 4, "sofie", 5, 6, 7, 8, 9]
+			odd_numbers = []
+
+			def only_odds():
+				for n in numbers:
+					if n % 2 != 0:
+						odd_numbers.append(n)
+
+			only_odds()
+		</code></pre>
+</section>
+
+<section style="font-size: smaller;" data-transition="none">
+		<pre><code data-trim data-noescape class="python">
+			<mark>numbers</mark> = [1, 2, 3, 4, "sofie", 5, 6, 7, 8, 9]
+			odd_numbers = []
+
+			def only_odds():
+				for n in <mark>numbers</mark>:
+					if n % 2 != 0:
+						odd_numbers.append(n)
+
+			only_odds()
+		</code></pre>
+</section>
+
+<section style="font-size: smaller;" data-transition="none">
+		<pre><code data-trim data-noescape class="python">
+			numbers = [1, 2, 3, 4, "sofie", 5, 6, 7, 8, 9]
+			odd_numbers = []
+
+			def only_odds(<mark>any_list_with_numbers</mark>):
+				for n in <mark>any_list_with_numbers</mark>:
+					if n % 2 != 0:
+						odd_numbers.append(n)
+
+			only_odds(<mark>numbers</mark>)
+		</code></pre>
+</section>
+
+
+<section style="font-size: smaller;" data-transition="none">
+		<pre><code data-trim data-noescape class="python">
+			numbers = [1, 2, 3, 4, "sofie", 5, 6, 7, 8, 9]
+			<mark>odd_numbers</mark> = []
+
+			def only_odds(any_list_with_numbers):
+				for n in any_list_with_numbers:
+					if n % 2 != 0:
+						<mark>odd_numbers.append(n)</mark>
+
+			only_odds(numbers)
+		</code></pre>
+</section>
+
+<section style="font-size: smaller;" data-transition="none">
+		<pre><code data-trim data-noescape class="python">
+			numbers = [1, 2, 3, 4, "sofie", 5, 6, 7, 8, 9]
+			<mark>odd_numbers</mark> = []
+
+			def only_odds(any_list_with_numbers):
+				for n in any_list_with_numbers:
+					if n % 2 != 0:
+						<mark>odd_numbers.append(n)</mark>
+
+			only_odds(numbers)
+			only_odds(numbers)
+		</code></pre>
+</section>
+
+<section style="font-size: smaller;" data-transition="none">
+		<pre><code data-trim data-noescape class="python">
+			numbers = [1, 2, 3, 4, "sofie", 5, 6, 7, 8, 9]
+
+			def only_odds(any_list_with_numbers):
+				<mark>odd_numbers = []</mark>
+
+				for n in any_list_with_numbers:
+					if n % 2 != 0:
+						<mark>odd_numbers.append(n)</mark>
+
+				return <mark>odd_numbers</mark>
+
+			<mark>odds = </mark> only_odds(numbers) 
+		</code></pre>
+</section>
+
+<section style="font-size: smaller;" data-transition="none">
+		<pre><code data-trim data-noescape class="python">
+			numbers = [1, 2, 3, 4, "sofie", 5, 6, 7, 8, 9]
+
+			def only_odds(any_list_with_numbers):
+				odd_numbers = []
+
+				for n in any_list_with_numbers:
+					if n % 2 != 0:
+						odd_numbers.append(n)
+
+				return odd_numbers
+
+			odds = only_odds(numbers)
+			<mark>
+			other_number = [22, 23, 24, 25, 26] 
+			other_odds = only_odds(other_numbers)
+			</mark>
+		</code></pre>
+</section>
+
+<section data-transition="none">
+	<ol style="font-size: smaller;">
+		<li>Skriv en funktion!</li>
+		<li>En funktion skal virke 'generelt' - tag ikke udgangspunkt i variable uden for funktionen</li>
+		<li style="color:#3f3f3f;">Pas på - lister er mutable</li>
+	</ul>
+</section>
+
+<section data-transition="none">
+	<ol style="font-size: smaller;">
+		<li>Skriv en funktion!</li>
+		<li>En funktion skal virke 'generelt' - tag ikke udgangspunkt i variable uden for funktionen</li>
+		<li>Pas på - lister er mutable</li>
+	</ul>
+</section>
+
+<section style="font-size: smaller;" data-transition="none">
+		<pre><code data-trim data-noescape class="python">
+			names1 = ["eve", "beatrice", "tim", "tom"]
+			names2 = ["tim", "tom", "mary", "fiona"]
+
+			def merge(L1, L2):
+				
+				for name in L2:
+					if name not in L1:
+						L1.append(name)
+
+				return L1
+
+			merged = merge(names1, names2)
+		</code></pre>
+</section>
+
+<section style="font-size: smaller;" data-transition="none">
+		<pre><code data-trim data-noescape class="python">
+			names1 = ["eve", "beatrice", "tim", "tom"]
+			names2 = ["tim", "tom", "mary", "fiona"]
+
+			def merge(<mark>L1</mark>, L2):
+				
+				for name in L2:
+					if name not in L1:
+						L1.append(name)
+
+				return L1
+
+			merged = merge(<mark>names1</mark>, names2)			
+		</code></pre>
+</section>
+
+<section style="font-size: smaller;" data-transition="none">
+		<pre><code data-trim data-noescape class="python">
+			names1 = ["eve", "beatrice", "tim", "tom"]
+			names2 = ["tim", "tom", "mary", "fiona"]
+
+			def merge(<mark>L1</mark>, L2):
+				
+				for name in L2:
+					if name not in L1:
+						<mark>L1.append</mark>(name)
+
+				return L1
+
+			merged = merge(<mark>names1</mark>, names2)
+		</code></pre>
+</section>
+
+<section style="font-size: smaller;" data-transition="none">
+		<pre><code data-trim data-noescape class="python">
+			In [1]: names1 = ["eve", "beatrice", "tim", "tom"]
+			In [2]: names2 = ["tim", "tom", "mary", "fiona"]
+			
+			In [3]: names1
+			Out[3]: ["eve", "beatrice", "tim", "tom"]
+
+			In [4]: merged = merge(names1, names2)
+
+			In [5]: merged
+			Out[5]: ['eve', 'beatrice', 'tim', 'tom', 'mary', 'fiona']
+
+			In [6]: names1
+			Out[6]: ['eve', 'beatrice', 'tim', 'tom', 'mary', 'fiona']
+		</code></pre>
+</section>
+
+<section style="font-size: smaller;" data-transition="none">
+		<pre><code data-trim data-noescape class="python">
+			names1 = ["eve", "beatrice", "tim", "tom"]
+			names2 = ["tim", "tom", "mary", "fiona"]
+
+			def merge(L1, L2):
+				L1 = <mark>L1[:]</mark>
+
+				for name in L2:
+					if name not in L1:
+						L1.append(name)
+
+				return L1
+
+			merged = merge(names1, names2)
+		</code></pre>
+</section>
+
+
+	<section>
+		<p>Opgave 1: Titanic data 2 - XML</p>
+		<p style="font-size: smaller;">
+			I denne opgave skal vi arbejde en XML som beskriver passagererne ombord på Titanic
+		</p>
+		<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Titanic_in_Southampton.jpg/640px-Titanic_in_Southampton.jpg">
+	</section>
+
+	<section style="font-size: smaller;">
+		<p>Data</p>
+		<ol style="font-size: smaller;">
+			<li>Dowload tekstfilen <icode>titanic.xml</icode> på absalon (oprindeligt fra <a href="https://www.kaggle.com/c/titanic/data">Kaggle</a>)</li>
+			<li>Tekstfilen er i XML (ikke csv som i den tidligere opgave)			
+			</li>
+
+				<pre><code data-trim class="xml">
+				<passengers>
+					<passenger id='1' survived='0' gender='male' class='3'>
+						<name>
+							<title>Mr.</title>
+							<firstname>Owen Harris</firstname>
+							<surname>Braund</surname>
+						</name>
+					</passenger>
+
+					<passenger id='2' survived='1' gender='female' class='1'>
+						<name>
+							<title>Mrs.</title>
+							<firstname>Florence Briggs</firstname>
+							<surname>Thayer</surname>
+						</name>
+					</passenger>
+				</code></pre>			
+		</ol>
+	</section>
+
+
+	<section>
+		<p>1.1 Lidt tal</p>
+		<ol style="font-size: smaller;">
+			<li>Indlæs <icode>titanic.xml</icode> i python</li>
+			<li>Brug xml-modulet til at gå igennem alle passagererne</li>
+			<li>Hvor mange <u>mænd</u> var der ombord og hvor mange af dem overlevede?</li>
+			<li>Hvor mange <u>kvinder</u> var der ombord og hvor mange af dem overlevede?</li>
+		</ol>
+
+		<p>1.2 Navne på overlevende</p>
+		<ol style="font-size: smaller;">
+			<li>Udskriv efternavnene på alle de overlevende</li>
+		</ol>		
+	</section>
+
+	

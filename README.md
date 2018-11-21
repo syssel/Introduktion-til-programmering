@@ -24,8 +24,8 @@ __Uge 9 (d. 8. november)__ Dictionaries (fortsat) \[[slides](/slides/week09.html
 
 __Uge 10 (d. 15. november)__ HTML \[[slides](/slides/week10.html)\]
 
-__Uge 11 (d. 22. november)__ Terminal & kommandolinje
+__Uge 11 (d. 22. november)__ XML \[[slides](/slides/week11.html)\]
 
 __Uge 12 (d. 29. november)__ Arbejde med opgave 2
 
-__Uge 13 (d.6. december)__ Terminal & kommandolinje
+__Uge 13 (d. 6. december)__ Terminal & kommandolinje
