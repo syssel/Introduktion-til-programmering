@@ -1,7 +1,7 @@
 ---
 layout: slide
 title: "Uge 11 - XML"
-solutions: "hide"
+solutions: "show"
 ---
 
 <section>
@@ -23,7 +23,7 @@ solutions: "hide"
 </section>
 
 <section>
-	<p>Opgave 1: Wiki-beskrivelser af de truede sprog</p>
+	<p>Opgave 1 (fra sidst): Wiki-beskrivelser af de truede sprog</p>
 
 	<ul style="font-size: smaller;">
 		<li>Tage udgangspunkt i listen over truede sprog i europa, <icode>endangered_europe.csv</icode>
@@ -329,5 +329,86 @@ solutions: "hide"
 			<li>Udskriv efternavnene på alle de overlevende</li>
 		</ol>		
 	</section>
+
+	<section style="font-size: smaller;">
+		<p>1.1 Lidt tal (løsning)</p>
+		<pre><code data-trim data-noescape class="python">
+			import xml.etree.ElementTree as ET
+
+			fpath = "data/titanic.xml"
+
+
+			tree = ET.parse(fpath)
+
+			root = tree.getroot()
+
+			n_women = 0
+			n_men = 0
+			n_women_survived = 0
+			n_men_survived = 0
+
+			for passenger in root.iter('passenger'):
+			    gender = passenger.get("gender") # or passenger.attrib["gender"]
+			    survived = passenger.get("survived") # or passenger.attrib["survived"]
+			    
+			    if gender == "female":
+			        n_women += 1
+			        if survived == "1": n_women_survived +=1
+			    
+			    if gender == "male":
+			        n_men += 1
+			        if survived == "1": n_men_survived +=1
+
+			print("Number of women on the boat:", n_women)
+			print("Number of women who survived:", n_women_survived)
+			print("Number of men on the boat:", n_men)
+			print("Number of men who survived:", n_men_survived)
+
+		</code></pre>		
+
+	</section>
+
+	<section style="font-size: smaller;">
+		<p>1.1 Lidt tal (alternativ løsning)</p>
+		<pre><code data-trim data-noescape class="python">
+			# Alternative way without a for-loop
+			# You can also filter on attributes in the findall method
+			# using 'xpath' syntax
+			# the '@' indicates that we are looking at attributes
+			# Read more here: https://docs.python.org/2/library/xml.etree.elementtree.html#supported-xpath-syntax
+			n_women = len(root.findall("passenger[@gender='female']"))
+			n_women_survived = len(root.findall("passenger[@gender='female'][@survived='1']"))
+
+			n_men = len(root.findall("passenger[@gender='male']"))
+			n_men_survived = len(root.findall("passenger[@gender='male'][@survived='1']"))
+
+			print("Number of women on the boat:", n_women)
+			print("Number of women who survived:", n_women_survived)
+			print("Number of men on the boat:", n_men)
+			print("Number of men who survived:", n_men_survived)
+
+			# You may also filter on tag-text, e.g., finding all the passengers names 'Henry'
+			# When we do not use '@' we are looking at tags and not attributes
+			# and the string on the right side of the equality represents the text within the tag
+			name = "Henry"
+			n_henrys = len(root.findall("passenger/name[firstname='{}']".format(name)))
+			print("Number of passengers named {}:".format(name), n_henrys)
+		</code></pre>		
+
+	</section>
+
+	<section style="font-size: smaller;">
+		<p>1.2 Navne på overlevende (løsning)</p>
+		<pre><code data-trim data-noescape class="python">
+			for passenger in root.iter('passenger'):
+			    name = passenger.find("name")
+			    surname = name.find("surname").text
+
+			    if passenger.get("survived") == "1":
+			        print(surname)
+
+		</code></pre>		
+
+	</section>	
 
 	

@@ -1,7 +1,7 @@
 ---
 layout: slide
 title: "Uge 10 - HTML"
-solutions: "hide"
+solutions: "show"
 ---
 
 <section>
@@ -33,7 +33,7 @@ solutions: "hide"
 <section>
 	<p>bs4 - BeautifulSoup</p>
 	<ul style="font-size: smaller;">
-		<li>Indbygget modul i python</li>
+		<li>Modul (kan installeres vha. pip)</li>
 		<li>Parse/læse html-sider</li>
 		<li>Alternativ til at arbejde med html-sider som strenge</li>
 		<li>Læser strukturen på html-siden</li>
@@ -125,7 +125,7 @@ solutions: "hide"
 		<pre><code data-trim data-noescape class="python">
 
 		def generateWikiURL(entry, postfix="", lang="en"):
-			# Url seperator
+			# Url separator
 			sep="_"
 
 			# Base url
@@ -157,7 +157,7 @@ solutions: "hide"
 			# Remove parentheses
 			parindex = language_en.find("(")
 
-			if parindex>-1:
+			if parindex!=-1:
 				language_en = language_en[:parindex].strip()
 			
 			url = generateWikiURL(language_en, postfix="language")
@@ -173,11 +173,15 @@ solutions: "hide"
 	<ol style="font-size: smaller;" start=3>
 		<li>Brug <icode>urllib</icode> til at indlæse hver af sprogenes wikipedia-artikler i python
 			<pre><code data-trim data-noescape class="python" style="font-size: smaller;">
+				import urllib
+
 				def requestURL(url):
 					try:
 						return urllib.request.urlopen(url)
-					except:
+					except urllib.error.HTTPError:
 						return "No site found"
+					except UnicodeEncodeError:
+						return "Could not read url"
 		</code></pre>	
 		</li>
 		<li>Brug <icode>BeautifulSoup</icode> til at finde artiklernes første to paragraffer (indholdet af de to første <icode class="html">&lt;p&gt;</icode> tags)</li>
@@ -189,7 +193,6 @@ solutions: "hide"
 <section style="font-size: smaller;" class="solution">
 		<p>3-5 (løsning)</p>
 		<pre><code data-trim data-noescape class="python">
-
 			for url in urls:
 				html = requestURL(url)
 				soup = BeautifulSoup(html, "lxml")
@@ -204,7 +207,6 @@ solutions: "hide"
 				print(language_en, url)
 				print(paragraphs[i].get_text())
 				print()
-
 		</code></pre>
 </section>
 
