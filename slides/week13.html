@@ -1,0 +1,158 @@
+---
+layout: slide
+title: "Uge 13 - N-grammer & opsamling"
+solutions: "hide"
+---
+
+<section>
+	<p>Program for i dag</p>
+	<ul style="font-size: smaller;">
+		<li>Vi skal lave øvelser med
+			<ul style="font-size: smaller;">
+				<li>Lidt af hvert</li>
+			</ul>
+		</li>
+		<li>N-grammer</li>
+		<li>Opgave 1: Caesar-cipher</li>
+	</ul>
+</section>
+
+<section>
+	<p>N-grammer</p>
+
+	<ul style="font-size: smaller;">
+		<li>Bogstaver eller ord</li>
+		<li>Simpel model for hvordan et sprog ser ud</li>
+		<li>Bruges når vi vil vide sandsynligheden for en sekvens</li>
+		<li><a href="https://web.stanford.edu/~jurafsky/slp3/">https://web.stanford.edu/~jurafsky/slp3/</a> (draft af 3. udgave, men 2. udgave findes på biblioteket)</li>
+		<li style="display: none">Kryptologi</li>
+	</ul>
+</section>
+
+
+<section>
+	<p>Opgave 1: Caesar-cipher</p>
+	<p style="font-size: smaller;">
+		I denne skal vi lave kode og dekode hemmelige beskeder skrevet i "Caesar-cipher"
+	</p>
+	<img src="https://upload.wikimedia.org/wikipedia/commons/2/26/Gaius_Julius_Caesar_%28100-44_BC%29.JPG" style="background-color:white;">
+</section>
+
+<section>
+	<p>Caesar-cipher</p>
+	<ul style="font-size: smaller;">
+		<li>Blev angiveligt brugt af Cæsar til at kode hemmelige beskeder</li>
+		<li>Simpel bogstav-for-bogstav udskiftning</li>
+		<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Caesar_cipher_left_shift_of_3.svg/500px-Caesar_cipher_left_shift_of_3.svg.png">
+		<li>"HELLO WORLD!" → "EBIIL TLOIA!"</li>
+	</ul>
+</section>
+
+<section>
+	<p> Caesar-cipher </p>
+	<p style="text-align:left;font-size: smaller">"HELLO WORLD!" → "EBIIL TLOIA!"</p>
+	<img style="background-color:white;" src="Caesar.svg"/>
+
+</section>
+
+<section>
+	<p>Caesar-cipher</p>
+	<p style="text-align:left;font-size: smaller">Kode beskeder ("HELLO WORLD!" → "EBIIL TLOIA!"):</p>
+	<ul style="font-size: smaller;">
+		<li>Vælg en <icode>key</icode>, som indikerer hvor langt frem eller tilbage der rykkes</li>
+		<li>Find placeringen i alfabetet på bogstavet du vil kode</li>
+		<li>Læg denne placering sammen med den <icode>key</icode> du har valgt</li>
+		<li>= placeringen på bogstavet i 'cifferet'</li>
+	</ul>
+</section>
+
+<section>
+	<p>Caesar-cipher</p>
+	<p style="text-align:left;font-size: smaller"> Kode beskeder ("HELLO WORLD!" → "EBIIL TLOIA!"):</p>
+	<ul style="font-size: smaller;">
+		<li><icode>key</icode>: -3</li>
+		<li>Alfabet:</li>
+		<img style="background-color:white;" src="Caesar.svg"/>
+		<li>Kode "H": 8 + (<icode>key</icode>) = 8 + (-3) = 5 = "E"</li>
+		<li>Kode "A": 1 + (-3) = -2 = ???</li>
+		<li>Hvis den nye placering er under 1, skal længden af alfabetet lægges til</li>
+	</ul>
+</section>
+
+
+<section>
+	<p>Caesar-cipher</p>
+	<p style="text-align:left;font-size: smaller">Dekode beskeder ("EBIIL TLOIA!" → "HELLO WORLD!"):</p>
+	<ul style="font-size: smaller;">
+		<li>Vælg en <icode>key</icode>, som indikerer hvor langt frem eller tilbage der rykkes</li>
+		<li>Find placeringen i alfabetet på bogstavet du vil <u>de</u>kode</li>
+		<li><u>Minus</u> denne placering med den <icode>key</icode> du har valgt</li>
+		<li>= placeringen på bogstavet <u>de</u>cifreret</li>
+	</ul>
+</section>
+
+<section>
+	<p>Caesar-cipher</p>
+	<p style="text-align:left;font-size: smaller"> Dekode beskeder ("EBIIL TLOIA!" → "HELLO WORLD!"):</p>
+	<ul style="font-size: smaller;">
+		<li><icode>key</icode>: -3</li>
+		<li>Alfabet:</li>
+		<img style="background-color:white;" src="Caesar.svg"/>
+		<li>Dekode "E": 5 - (<icode>key</icode>) = 5 - (-3) = 8 = "H"</li>
+		<li>Dekode "Å": 29 - (-3) = 32 = ???</li>
+		<li>Hvis den nye placering større end alfabetets længde, skal længden af alfabetet <u>trækkes fra</u></li>
+	</ul>
+</section>
+
+<section>
+	<p>Opgave 1: Caesar-cipher</p>
+	<ol style="font-size: smaller;">
+		<li>Lav en funktion som kan kode beskeder i Caesar-cipher</li>
+		<li>Lav en funktion som kan dekode beskeder i Caesar-cipher</li>
+		<li>(eller lav én der kan begge dele) </li>
+		<li>Funktionen(erne) kan
+			<ul>
+				<li>tage 2 input: en streng og en key</li>
+				<li>returnerer den kodede/dekodede streng</li>				
+			</ul>
+		</li>
+		<li>I kan bruge følgende som alfabet:</li>
+		<pre><code data-trim data-noescape class="python">
+			alphabet = "abcdefghijklmnopqrstuvwxyzæøå".upper()
+		</code></pre>
+	</ol>
+</section>
+<section style="font-size: smaller;">
+	<p style="font-size: smaller;">
+		<pre><code data-trim data-noescape class="python">
+			In [1]: code = Caesar_encode("HELLO WORLD!", -3)
+
+			In [2]: print(code)
+			Out[2]: 'EBIIL TLOIA!'
+
+			In [3]: code = Caesar_encode("HELLO WORLD!", 5)
+
+			In [4]: print(code)
+			Out[4]: 'MJQQT ØTWQI!'		
+		</code></pre>			
+
+		<pre><code data-trim data-noescape class="python">
+			In [1]: code = Caesar("HELLO WORLD!", -3, "encode")
+
+			In [2]: print(code)
+			Out[2]: 'EBIIL TLOIA!'
+
+			In [3]: text = Caesar(code, -3, "decode")
+
+			In [4]: print(text)
+			Out[4]: 'HELLO WORLD!'
+		</code></pre>
+	</p>	
+</section>
+
+<section>
+	<p>Opgave 1: Caesar-cipher</p>
+	<ol style="font-size: smaller;" start="6">
+		<li>Se om I kan dekode hvilken julesang der gemmer sig i "hemmelig.txt" på Absalon</li>
+	</ol>
+</section>
