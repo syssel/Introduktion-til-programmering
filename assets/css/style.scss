@@ -11,10 +11,19 @@ footer {
   display: none;
 }
 
+section {
+  font-size: smaller !important;
+}
+
 code {
   -moz-tab-size: 4; /* Firefox */
   -o-tab-size: 4; /* Opera 10.6-12.1 */
   tab-size: 4;
+  font-size: smaller !important;
+}
+
+li, table {
+  font-size: smaller !important;
 }
 
 icode {
