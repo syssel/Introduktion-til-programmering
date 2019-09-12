@@ -1,0 +1,85 @@
+---
+layout: slide
+title: "Uge 2 - Strings & functions"
+---
+
+<section data-markdown>
+	<textarea data-template>
+		Program for i dag
+
+		- Vi skal lave øvelser med
+			- Functions (indbyggede og vores egne)
+			- Strings
+		- Opgave 1: BMI-beregner
+		- Opgave 2: Automatisk litteraturliste
+	</textarea>
+</section>
+
+<section data-markdown>
+	<textarea data-template>
+		#### Opgave 1: BMI-beregner
+		
+		I denne opgave skal I lave et program som ud fra højde og vægt, kan beregne en brugers BMI.
+		
+		![](https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Tape_measure_colored.jpeg/512px-Tape_measure_colored.jpeg)
+	</textarea>
+</section>
+
+<section data-markdown>
+	<textarea data-template>
+		1.1 Funktion til at beregne BMI
+		- Lav en funktion til at beregne BMI, som
+			- tager 2 argumenter - `højde` og `vægt`
+			- returnerer BMI-tallet
+		- Brug funktionen til at beregne BMI-tallet for en person som vejer 75 kilo og er 170 cm høj
+		- Brug gerne den indbyggede input() funktion så kilo og vægt kan indtastes af brugeren når programmet køres
+	</textarea>
+</section>
+
+<section data-markdown>
+	<textarea data-template>
+		1.2 BMI-rapport
+		- Lav en ny funktion som rapporterer BMI-tallet
+			- tager 2 argumenter - højde og vægt
+			- printer følgende meddelelse: `Ud fra højden {X} og vægten {Y} er dit BMI-tal beregnet til at være {Z}`, hvor `{X}` er højden og `{Y}` er vægten og `{Z}` er det beregnede BMI-tal
+		- Funktionen skal bruge BMI-beregneren fra sidste slide til at beregne BMI-tallet givet de 2 argumenter
+	</textarea>
+</section>
+
+<section data-markdown>
+	<textarea data-template>
+		#### Opgave 2: Automatisk litteraturliste
+		
+		På nettet findes der flere værktøjer til at generere litteraturlister automatisk. I denne opgave skal I lave en enkel udgave i python med nogle af de funktioner I har lært indtil videre.
+		
+		![](https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Scientific_citations.png/640px-Scientific_citations.png)
+	</textarea>
+</section>
+
+<section data-markdown>
+	<textarea data-template>
+		2.1 Data
+		- Tag udgangspunkt i artiklen [her](http://www.aclweb.org/anthology/D17-1265)
+		- Skriv følgende oplysninger om artiklen som variable i en .py-fil
+			- Fornavn
+			- Efternavn
+			- Årstal
+			- Titel
+			- Konference
+			- Sidetal (start)
+			- Sidetal (slut)
+		- Print hver variabel og deres type adskilt af tab i python
+	</textarea>
+</section>
+
+<section data-markdown>
+	<textarea data-template>
+		2.2 Automatisk formattering af litteraturliste
+		
+		- Skriv en funktion som 
+			- tager variablene fra sidste opgave som argumenter (fornavn, efternavn, årstal, titel, konference, sidetal (start), sidetal (slut))
+			- returnerer et punkt i en litteraturliste som en streng.
+			- Den returnerede litteraturliste skal se således ud: `Efternavn, Fornavn. "Titel". Konference. Sidetal1-Sidetal2. (Årstal)`
+		- Kør funktionenen med variablene fra sidste slide
+	</textarea>
+</section>

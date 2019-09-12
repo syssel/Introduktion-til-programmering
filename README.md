@@ -4,7 +4,7 @@ Slides til øvelsestimerne (torsdage 13-15) på kurset [Introduktion til program
 
 __Uge 1 (d. 5. september)__ Variables \[[slides](/slides/week01.html)\]
 
-__Uge 2 (d. 12 september)__ Strings & functions <!-- \[[slides](/slides/week02.html)\] -->
+__Uge 2 (d. 12 september)__ Strings & functions \[[slides](/slides/week02.html)\]
 
 __Uge 3 (d. 19. september)__ Lists <!-- \[[slides](/slides/week03.html)\]-->
 
