@@ -1,0 +1,161 @@
+---
+layout: slide
+title: "Uge 3 - Lists"
+---
+
+<section data-markdown>
+	<textarea data-template>
+		Program for i dag
+
+		- Vi skal lave øvelser med
+			- Lists & strings
+			- Indexing
+			- Slicing
+
+		- Fra sidst: Automatisk litteraturliste
+		- Dagens opgave: Clasificación de paso
+			- Opgave 1: Klassement
+			- Opgave 1: Statisik over rytternes tider
+	</textarea>
+</section>
+
+<section data-markdown>
+	```python
+	def BibliographyGenerator(FirstName, LastName, Year, Title, 
+	                            Proceedings, StartP, EndP):
+	    """ (str, str, str, str, str, int, int) -> str
+	    Returns a bibliography entry from the bibliography 
+	    data given by the parameters of the function.
+
+	    The returned will have the following format:
+	    LastName, FirstName. Title. Proceedings. StartP-EndP. (Year)
+	    """
+
+	    # Format bib entry
+	    Name_format = LastName + ", " + FirstName
+	    Title_format = '"' + Title + '"'
+	    Proceedings_format = Proceedings
+	    Pages_format = str(StartP) + "-" + str(EndP)
+	    Year_format = "("+str(Year)+")"
+
+	    # Delimiter
+	    delimiter = ". "
+
+	    return(Name_format + delimiter + Title_format + delimiter +
+	            Proceedings_format + delimiter + Pages_format +
+                delimiter + Year_format)
+
+	# Article data
+	fname = "Rachel"
+	lname = "Bawden"
+	title = "Machine Translation, it’s a question of style, innit?"
+	year = 2017
+	conf = "Proceedings of the 2017 Conference on Empirical Methods in Natural Language Processing"
+	pstart = 2507
+	pend = 2512
+
+	# Generate reference
+	reference = BibliographyGenerator(fname, lname, year, title, conf, pstart, pend)
+
+	# Print bibliography
+	print("Litteraturliste")
+	print("===============")
+	print(reference)
+    ```
+</section>
+
+
+<section data-markdown>
+	```python
+	def BibliographyGenerator(FirstName, LastName, Year, Title, 
+	                          Proceedings, StartP, EndP):
+	    """ (str, str, str, str, str, int, int) -> str
+	    Returns a bibliography entry from the bibliography 
+	    data given by the parameters of the function.
+
+	    The returned will have the following format:
+	    LastName, FirstName. Title. Proceedings. StartP-EndP. (Year)
+	    """
+
+	    # Bib entry format as python formatted string
+	    template = "{ln}, {fn}. {title}. {proc}. {start}-{end}. ({year})"
+
+	    return template.format(ln=LastName, fn=FirstName, title=Title, 
+	                            proc=Proceedings, start=StartP, 
+	                            end=EndP, year=Year)
+
+	# Article data
+	fname = "Rachel"
+	lname = "Bawden"
+	title = "Machine Translation, it’s a question of style, innit?"
+	year = 2017
+	conf = "Proceedings of the 2017 Conference on Empirical Methods in Natural Language Processing"
+	pstart = 2507
+	pend = 2512
+
+	# Generate reference
+	reference = BibliographyGenerator(fname, lname, year, title, conf, pstart, pend)
+
+	# Print bibliography
+	print("Litteraturliste")
+	print("===============")
+	print(reference)
+    ```
+</section>
+
+<section data-markdown>
+	<textarea data-template>
+		#### Opgave: Clasificación de paso
+		
+		I dagens opgaver skal vi kigge på rytternes sluttider efter en etape i cykling
+		
+		![](https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/1vueltaespana.jpg/640px-1vueltaespana.jpg)
+	</textarea>
+</section>
+
+<section data-markdown>
+	<textarea data-template>
+		Opgave 1: Klassement
+
+		1. I listen `times` gemmer sig rytternes tider på en etape (givet i minutter)
+
+			```python
+			times = [243.42, 180.51, 240.18, 137.98, 241.56, 167.26, 196.49, 189.11, 197.25, 236.76, 166.98, 214.73, 172.57, 265.65]
+			```
+		
+		1. Lav et _klassement_ hvor I sorterer rytternes tider (hurtigste tider skal stå først i listen)
+			- I må selv bestemme om I laver en ny liste med klassementet eller om i modificerer listen med tider
+		3. Modificér jeres liste over klassementet
+			1. Da tiderne er i minutter, skal I bruge funktionen `Sec2Min` som konverterer sekunder til minutter (næste slide)
+			1. Giv den hurtigste rytter 8 bonussekunder (træk 8 sekunder fra hans tid) da han kom først over strejen
+			1. Giv nummer otte på etapen 20 strafsekunder (læg 20 sekunder til hans tid) da han sad på hjul af en bil
+			1. Diskvalificer den sidste rytter (fjern hans tid fra listen) da han ikke nåede tidsgrænsen
+			1. Summen af alle rytternes tider bør nu være `2585`
+	</textarea>
+</section>
+
+<section data-markdown>
+	
+	```python
+	# Ryternes tider
+	times = [243.42, 180.51, 240.18, 137.98, 241.56, 167.26, 196.49, 189.11, 197.25, 236.76, 166.98, 214.73, 172.57, 265.65]
+
+	# Funktion til at omregne sekunder til minutter
+	def Sec2Min(sec):
+	    """ float -> float
+	    Converts seconds to minutes
+	    """
+	    return sec/60
+	```
+</section>
+
+<section data-markdown>
+	<textarea data-template>
+		Opgave 2: Statistik over rytternes tider
+
+		1. Del listen med klassementstiderne over i to (del på midten)
+			- Skriv gerne jeres kode som en funktion, der kan dele en liste i to.
+		1. Hvad er gennemsnittet af de hurtigste rytteres tider?
+		1. Hvad er gennemsnittet af de langsommeste rytteres tider?
+	</textarea>
+</section>
