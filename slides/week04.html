@@ -1,0 +1,154 @@
+---
+layout: slide
+title: "Uge 4 - Methods & Loops"
+---
+
+
+<section data-markdown>
+	<textarea data-template>
+		Program for i dag
+
+		- Vi skal lave øvelser med
+			- Loops (`for` og `while` loops
+			- Methods (strings og lists)
+
+		- Fra sidst: Clasificación de paso
+			- Opgave 1: Klassement
+			- Opgave 2: Statisik over rytternes tider
+			
+		- Dagens øvelser
+			- Opgave 1: IMDB
+			- Opgave 2: Teksprocessering
+	</textarea>
+</section>
+
+<section data-markdown>
+	<textarea data-template>
+		Opgave 1: Klassement
+		```
+		times = [243.42, 180.51, 240.18, 137.98, 241.56, 167.26, 196.49, 189.11, 197.25, 236.76, 166.98, 214.73, 172.57, 265.65]
+
+		# 2. Lav et klassement hvor I sorteret rytternes tider
+		klassement = sorted(times)	# Ny liste - listen `times` er uændret
+		times.sort()	# Listen `times` er nu sorteret
+
+		# 3.1 Funktion til at omregne sekunder til minutter
+		def Sec2Min(sec):
+			""" float -> float
+			Converts seconds to minutes
+			"""
+			return sec/60
+		
+		# 3.2 Giv den hurtigste rytter 8 bonussekunder
+		klassement[0] -= Sec2Min(8)
+
+		# 3.3 Giv nummer 8 på etapen 20 strafsekunder
+		klassement[7] += Sec2Min(20)
+
+		# 3.4 Diskvalificér den sidste rytter
+		del klassement[-1]
+		# eller
+		klassement = klassement[:-1]
+		# eller
+		klassement.pop()
+
+		# 3.5 Summen bør nu være 2585
+		print(sum(klassement))
+		```
+	</textarea>
+
+</section>
+
+<section data-markdown>
+		<textarea data-template>
+			Opgave 2: Statistik over rytternes tider
+
+			```
+			times = [243.42, 180.51, 240.18, 137.98, 241.56, 167.26, 196.49, 189.11, 197.25, 236.76, 166.98, 214.73, 172.57, 265.65]
+			klassement = sorted(times)
+
+			# 1. Del klassementet over i 2
+
+			def splitlist(L):
+				""" list -> (list, list)
+					Splits the input list, L, into two lists of (if possible) equal size.
+					If the length of L is uneven, the first sublist should be shorther than the second
+				"""
+
+				split_at = int(len(L)/2)
+				l1 = L[0:split_at]
+				l2 = L[split_at:]
+
+				return l1, l2
+
+			top, bottom = splitlist(klassement)
+
+			# 2. Hvad er gennemsnittet af de hurtigste rytteres tider?
+			def avg(L):
+				return sum(L)/len(L)
+			
+			print(avg(top))
+
+			# 3. Hvad er gennemsnittet af de langsommeste rytteres tider?
+			print(avg(bottom))
+
+			```
+		</textarea>
+	
+	</section>
+
+
+<section data-markdown>
+	<textarea data-template>
+		#### Opgave 1: IMDB
+		
+		I denne opgave skal vi arbejde med hvad bogen kalder "parallel" data, nemlig film og deres IMDb-ratings.
+		
+		![](https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Toyogeki-Movie_Toyooka002.jpg/640px-Toyogeki-Movie_Toyooka002.jpg)
+	</textarea>
+</section>
+
+<section data-markdown>
+		<textarea data-template>
+			- Nedenunder finder I de to lister `movies` og `ratings`, som svarer til IMDBs højest rangerede film og deres tilsvarende rating
+			
+			``` python
+			# Top 10 rated imdb movies
+			movies = ['fight club', 'the godfather', "schindler's list", 'the dark knight', 'the lord of the rings: the return of the king', 'the shawshank redemption', 'the godfather: part ii', 'pulp fiction', '12 angry men', 'the good, the bad and the ugly']
+
+			ratings = [8.8, 9.2, 8.9, 9.0, 8.9, 9.2, 9.0, 8.9, 8.9, 8.8]
+			```
+
+			1. Brug et for-loop til for hver film i listen `movies`, at printe filmens titel sammen med deres rating
+				Eksempel: `the godfather		9.2`
+			2. Som I kan se mangler filmtitlerne stort begyndelsesbogstav i nogle af ordene. Lav en funktion i python som skriver titlerne korrekt.
+				- Eksempel: "the good, the bad and the ugly" => "The Good, the Bad and the Ugly"
+				- Begynd simpelt med at skrive alle ordene med stort begyndelsesbostav
+				- Derefter kan I begynde at eksperimentere med hvordan I for eksempel undgår skrive ord som _the_ og _and_ med stort, og hvordan I tager hensyn til anden tegnsætning.
+
+	</textarea>
+</section>
+
+<section data-markdown>
+		<textarea data-template>
+			#### Opgave 2: Teksprocessering
+			
+			![](https://live.staticflickr.com/6151/6198246544_64188f7175_z.jpg)
+	</textarea>
+</section>
+<section data-markdown>
+		<textarea data-template>
+			Opgave 2: Teksprocessering
+
+			<sup>I denne opgave skal vi forsøge at lave et lille teksprocesseringsprogram, som kan fjerne tegnsætning i slutningen af et ord. Jeg vil foreslå at I bruger et while-loop til at løse opgaven:
+			1. Lav en funktion som tager et ord som input og som returnerer det samme ord, men hvor al tegnsætning er fjernet fra slutningen af ordet.</sup>
+
+				Eksempel:
+
+				__input__ `hej!!!`
+				__output__ `hej`
+
+				__input__ `men..?`
+				__output__ `men`
+		</textarea>
+	</section>
