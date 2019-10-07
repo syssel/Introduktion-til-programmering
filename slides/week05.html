@@ -1,0 +1,206 @@
+---
+layout: slide
+title: "Uge 5 - Reading and writing files"
+---
+
+<section data-markdown>
+    <textarea data-template>
+        Program for i dag
+
+        - Vi skal lave øvelser med
+            - Åbne tekstfiler
+            - Skrive tekstfiler
+
+        - Fra sidst
+            - Opgave 1: IMDB
+            - Opgave 2: Teksprocessering
+
+        - Dagens øvelse
+            - Opgave 1: Indlæsning af tekstfiler - Shakespeare wiki
+            - Opgave 2: Comma-seperated values (CSV) - Titanic data
+
+    </textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+#### Opgave 1: IMDB
+```python
+ratings = [8.8, 9.2, 8.9, 9.0, 8.9, 9.2, 9.0, 8.9, 8.9, 8.8]
+
+def cap(film):
+    words = film.split(" ")
+    
+    for index, word in enumerate(words):
+        if word not in ("and", "the", "of") or index==0:
+            words[index] = word.capitalize()
+            
+        if word == "ii" or word=="iii":
+            words[index] = word.upper()
+    
+        if words[index-1][-1] in (".", "-", ":"):
+            words[index] = word.capitalize()
+        
+    
+    return " ".join(words)
+            
+for index, film in enumerate(movies):
+    
+    rigtig_titel = cap(film)
+    print(rigtig_titel, L2[index])
+```
+    </textarea>
+</section>
+
+
+<section data-markdown>
+    <textarea data-template>
+        #### Opgave 2: Teksprocessering
+
+        <sup>
+            I denne opgave skal vi forsøge at lave et lille teksprocesseringsprogram,
+            som kan fjerne tegnsætning i slutningen af et ord.
+            Jeg vil foreslå at I bruger et while-loop til at løse opgaven:
+        </sup>
+
+        1. Lav en funktion som tager et ord som input og som returnerer det samme ord, men hvor al tegnsætning er fjernet fra slutningen af ordet.
+            
+            Eksempel:
+
+            __input__ `hej!!!`
+            __output__ `hej`
+
+            __input__ `men..?`
+            __output__ `men`
+    </textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+#### Opgave 2: Teksprocessering
+```python
+def rstrip_punct(word):
+    # Define punctuation
+    punctuation = list("!.,:;()-?")
+
+    # While last input character is within the set of punctuation signs
+    # and word is not an empty string
+    while word!="" and word[-1] in punctuation:
+
+        # Slice the last character from the word
+        word = word[:-1]
+    
+    # Return the word when while loop is finished
+    return word
+
+words = ["test", "test?", "tester!!", "test?!", "!!?", "!!Test"]
+
+for word in words:
+    print(rstrip_punct(word))
+```
+
+    </textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-markdown>
+#### Opgave 1: Indlæsning af tekstfiler - Shakespeare wiki
+
+I denne opgave skal vi indlæse to versioner af den engelske wikipedia-artikel om Shakespeare og beregne deres LIX-tal
+
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Shakespeare.jpg/375px-Shakespeare.jpg)
+
+    </textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-markdown>
+#### 1.1 Tekster
+
+1. Hent filerne `simple.txt` og `wiki.txt` fra Absalon
+2. Læg de to filer i den samme mappe som jeres .py-filer, evt. i en undermappe kaldet `tekster`
+3. Teksterne er to versioner af Shakespeares wikipedia-artikel, og de består af en række sætning (en på hver linje):
+
+``` text
+William Shakespeare (26 April 1564 (baptized) – 23 April 1616) was an English playwright, poet, and actor.
+He wrote 37 plays (with about half of them considered comedies) and two long poems in his lifetime.
+He lived in Stratford-upon-Avon, in Warwickshire, England.
+His plays are still performed today. He is often quoted in modern writing.
+By 1594 he was an actor in The Chamberlain's Men acting company.
+His plays are of different kinds, or genres.
+```
+    </textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-markdown>
+#### 1.2 Inlæsning af filer
+1. Indlæs de to tekster i python
+2. Print teksterne linje for linje og angiv hvor mange ord der er i linjen/sætningen: `Dette er indholdet af en linje.	6`
+
+</br>
+#### 1.3 LIX-tal
+1. Lav en funktion som kan beregne LIX-tallet af en tekst
+2. For at beregne LIX-tallet skal i bruge følgende oplysninger om en tekst:
+    Antallet af ord (`ord`), 
+    antallet af sætninger (`sætninger`), 
+    antallet af ord på over 6 bogstaver (`lange_ord`)
+3. Når I har ovenstående oplysninger kan I udregne LIX således:
+    $$LIX = {sætninger \over ord} + {lange\\_ord \cdot 100 \over ord }$$
+    </textarea>
+</section>
+
+
+<section data-markdown>
+    <textarea data-markdown>
+#### Opgave 2: Comma-separated values (CSV) - Titanic data
+
+I denne opgave skal vi arbejde en tekstfil som beskriver passagererne ombord på Titanic
+
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Titanic_in_Southampton.jpg/640px-Titanic_in_Southampton.jpg)
+    </textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-markdown>
+#### Data
+1. Hent tekstfilen `titanic.txt` fra Absalon (oprindeligt fra [Kaggle](https://www.kaggle.com/c/titanic/data)
+2. Læg filen i den samme mappe som jeres .py-filer
+3. Tekstfilen er i CSV-format: </br>
+    <sub>
+    I stedet for at hver linje består af en række ord (separeret med mellemrum), </br>
+    så består hver linje af en række værdier (separeret af semikolon)
+    </sub>
+
+``` text
+Id;Survived;Pclass;Name;Sex
+1;0;3;Braund, Mr. Owen Harris;male
+2;1;1;Cumings, Mrs. John Bradley;female
+3;1;3;Heikkinen, Miss. Laina;female
+4;1;1;Futrelle, Mrs. Jacques Heath;female
+```
+
+``` text
+Id; Survived;  Pclass;                          Name;    Sex
+1;         0;       3;       Braund, Mr. Owen Harris;   male
+2;         1;       1;    Cumings, Mrs. John Bradley; female
+3;         1;       3;        Heikkinen, Miss. Laina; female
+4;         1;       1;  Futrelle, Mrs. Jacques Heath; female
+```
+    </textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-markdown>
+#### 2.1 Inlæsning af fil
+1. Åbn Titanic-filen i python
+2. Print for de første 10 passagere (de første 10 linjer) på skibet
+    </br>
+    <sub>Deres `navn`, `køn`, `klasse` og angiv om de overlevede ulykken eller ej</sub>
+
+
+</br>
+#### 2.2 Udtrækning af data
+1. Skriv en ny tekstfil i CSV-format med dataen fra Titanic-filen, men som kun indeholder linjer for de passagere som overlevede.
+</textarea>
+</section>

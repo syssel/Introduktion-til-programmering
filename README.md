@@ -12,7 +12,7 @@ __Uge 4 (d. 26. september)__ Methods & loops \[[slides](/slides/week04.html)\]
 
 ~~__Uge 5 (d. 3. oktober)__~~ (rykket til mandag d. 7. oktober)
 
-__Uge 6 (d. 7. oktober)__ Reading and writing files <!-- \[[slides](/slides/week05.html)\] (mandag) -->
+__Uge 6 (d. 7. oktober)__ Reading and writing files \[[slides](/slides/week05.html)\]
 
 __Uge 6 (d. 10. oktober)__ Booleans <!-- \[[slides](/slides/week06.html)\] -->
 
