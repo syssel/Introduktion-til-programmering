@@ -1,0 +1,156 @@
+---
+layout: slide
+title: "Uge 6 - Booleans"
+---
+
+<section data-markdown>
+    <textarea data-template>
+        Program for i dag
+
+        - Vi skal lave øvelser med
+            - Booleans
+            - (+ Skrive tekstfiler)
+
+        - Fra sidst
+            - Opgave 2: Comma-seperated values (CSV) - Titanic data
+
+        - Dagens øvelse
+            - Opgave 1: Frugtklassifikation
+
+    </textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+        #### Opgave 2: Comma-seperated values (CSV) - Titanic data
+        ```python
+        path = "data\\titanic.txt" # Windows
+        path = "data/titanic.txt"   # Mac
+
+        with open(path, "r") as f:
+            header = f.readline()
+            data = f.readlines()
+
+        separator = ";"
+
+        # Passengers who survived
+        survived_passengers = []
+
+        # Read passenger data
+        for i, line in enumerate(data):
+
+            # Unpack all of the values
+            values = line.split(separator)
+
+            idx = values[0].strip()
+            survived = values[1].strip()
+            classx = values[2].strip()
+            name = values[3].strip()
+            sex = values[4].strip()
+            
+            if i < 10:
+                print("{n} ({s}, {c}. class) Did{su} survive".format(n=name, 
+                                                                    s=sex, 
+                                                                    c=classx,
+                                                                    su=" not" if int(survived) else ""))
+
+            if int(survived):
+                survived_passengers.append([idx, survived, classx, name, sex])
+
+
+        # Write survived passenger file
+        w = open("data\\titanic_survived.txt", "w")
+        for p in survived_passengers:
+            w.write(separator.join(p)+"\n")
+        w.close()
+        ```
+    </textarea>
+</section>
+
+
+<section data-markdown>
+    <textarea data-template>
+        #### Opgave 1: Frugtklassifikation
+
+        I denne opgave skal I lave et lille program som kan gætte en frugt ud for en række spørgsmål
+        
+        ![](https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/A_fruit_stand_in_Mauritius.jpg/640px-A_fruit_stand_in_Mauritius.jpg)
+    </textarea>
+</section>
+
+
+<section data-markdown>
+    <textarea data-template>
+        #### 1.1 Gæt en frugt
+
+        Skriv et program i python, som kan gætte en frugt ud fra følgende oplysninger:
+        - Form (rund eller ej)
+        - Størrelse (1-5)
+        - Farve (grøn, gul, rød, ...)
+
+    </textarea>
+</section>
+
+<section data-markdown>
+        <textarea data-template>
+            #### 1.1 Gæt en frugt
+            1. Bed brugeren om at tænke på en frugt
+            2. Stil spørgsmål, for eksempel:
+                - Er frugten rund?
+                - Hvor stor er den på en skala fra 1-5?
+                - Hvilken farve har den?
+            3. Brug følgende logik til at gætte frugten
+    </textarea>
+</section>
+
+<section data-markdown>
+        <textarea data-template>
+            ![](FruitsDecisionTree.svg)
+    </textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+        #### 1.1 Gæt en frugt
+        1. Bed brugeren om at tænke på en frugt
+        2. Stil spørgsmål, for eksempel:
+            - Er frugten rund?
+            - Hvor stor er den på en skala fra 1-5?
+            - Hvilken farve har den?
+        3. Brug følgende logik til at gætte frugten
+        4. **Hvis gættet er rigtigt**
+            - Giv brugeren mulighed for at gætte en ny frugt
+        5. **Hvis gættet er forkert**
+            - Bed brugeren om at indtaste den rigtige frugt
+    </textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+        #### Eksempel
+        ``` python
+        >>> Tænk på en frugt og tryk 'enter'
+        >>> Hvilken farve har frugten? gul
+        >>> Er frugten rund? Ja
+        >>> Hvor stor på en skala fra 1-5? 5
+        >>> Er det en grape? Nej
+        >>> Nå, hvad er det så? Melon
+        >>> Vil du prøve en gang til? Ja
+        >>> Tænk på en frugt of tryk 'enter'
+        ...
+        ```
+    </textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+        #### 1.2  Skriv til fil (BONUS)
+        1. Skriv en CSV fil hvor hver linje svarer til en frugt brugeren har tænkt på:
+        ``` text
+        honning melon;gul;1;5
+        citron;gul;1;2
+        æble;rød;1;3
+        banan;gul;0;3
+        ```
+    </textarea>
+</section>
