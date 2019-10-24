@@ -154,3 +154,65 @@ title: "Uge 6 - Booleans"
         ```
     </textarea>
 </section>
+
+<section data-markdown>
+    <textarea data-template>
+#### Løsning
+```python
+def gætenfrugt():
+    input("Tænk på en frugt...")
+    farve = input("Hvad er farven? ").lower()
+    størrelse = int(input("Hvad er størrelsen (1-5) "))
+    rund = input("Er frugten rund?").lower() == "ja"
+    sød = input("Er den sød?").lower() == "ja"
+    
+    frugt = "ukendt"
+    
+    if farve == "grøn":
+        if størrelse > 4:
+            frugt = "vandmelon"
+        elif størrelse < 2:
+            frugt = "vindrue"
+        else:
+            frugt = "æble"
+
+    elif farve == "rød":
+        if størrelse > 1:
+            frugt = "æble"
+        else:
+            if sød:
+                frugt = "kirsebær"
+            else:
+                frugt = "vindrue"
+
+    elif farve == "gul":
+        if not rund:
+            frugt = "banan"
+        else:
+            if størrelse >= 3:
+                frugt = "grape"
+            else:
+                frugt = "citron"
+
+    if frugt != "ukendt":
+        svar =  input("Tænker du på "+frugt+"?")
+    
+        if svar == "nej":
+            frugt =  input("Hvilken frugt tænkte du så på?")
+    else:
+        frugt = input("Jeg kunne ikke gætte din frugt. Hvilken frugt tænkte du på?")
+
+
+    with open("frugter.txt", "a") as fout:
+        fout.write(";".join([frugt, farve, str(størrelse), str(rund), str(sød)])+"\n")
+    
+
+    igen = input("Vil du prøve igen?")
+    if igen == "ja":
+        gætenfrugt()
+    else:
+        return
+
+```
+    </textarea>
+</section>
