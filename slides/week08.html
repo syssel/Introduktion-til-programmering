@@ -1,0 +1,100 @@
+---
+layout: slide
+title: "Uge 8 - Set & HTML"
+---
+
+<section data-markdown>
+    <textarea data-template>
+        Program for i dag
+
+        - Vi skal lave øvelser med
+            - Set
+            - HTML
+        - UNESCOs liste over truede sprog i Europa
+            - Opgave 1: De truede sprog (sets)
+            - Opgave 2: Wiki-beskrivelser (html)
+    </textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+        ### UNESCO Atlas of the World's Languages in danger
+
+        - Dataset på [kaggle](https://www.kaggle.com/the-guardian/extinct-languages)
+        - .csv-fil på absalon over sprogene i Europa (endangered_europe.csv)
+
+
+        - Oplysning om
+            - ID
+            - Navn på engelsk, fransk og spansk
+            - Lande sproget bliver talt i
+            - Grad af sårbarhed
+            - Antal talere
+        - Eksempel
+            ```text
+            ID;Name in English;Name in French;Name in Spanish;Countries;Degree of endangerment;Number of speakers
+            382;Lombard;lombard;lombardo;Italy, Switzerland;Definitely endangered;3500000
+            1022;South Italian;italien du sud;napolitano-calabrés;Italy;Vulnerable;7500000
+            1023;Sicilian;sicilien;siciliano;Italy;Vulnerable;5000000
+            ```
+    </textarea>
+</section>
+
+
+<section data-markdown>
+    <textarea data-template>
+        ### Opgave 1: Set
+        I denne opgave skal vi bruge sæt (mændger) til at blive klogere på truede sprog i Europa
+        1. Indlæs `endangered_europe.csv` i python
+        2. Hvilke forskellige grader af sårbarhed bruger UNESCO?
+
+    </textarea>
+</section>
+<section data-markdown>
+    <textarea data-template>
+
+        Når I kender svaret på spørgsmålet fra sidste slide...
+        1. Lav et sæt tomt for hver grad
+        2. Lav tre sæt som angiver hvor mange talere et sprog har
+            - ét for sprog med under 100.000 talere
+            - ét for sprog med mellem 100.000 og en million talere
+            - ét for sprog med over en million talere
+        3. Indlæs dataen fra .csv-filen igen om gem navnene på sprogene i de sæt hvor de hører til
+            - Eksempel på hvordan sprog kan tilhøre forskellige mængder
+
+```python
+# Grad af sårbarhed
+meget_truet = {'bretonsk', 'bornholmsk'}
+lidt_truet = {'sønderjysk'}
+
+# Antal talere
+få_talere = {'sønderjysk', 'bornholsk'}
+mange_talere = {'bretonsk'}
+```
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+        Brug jeres sæt til at svare på følgende spørgsmål:
+        1. Hvor mange sprog er enten "Severely endangered" eller "Critically endangered"?
+        2. Hvilke af de "Severely endangered" sprog har færre end 100.000 talere?
+        3. Hvilke af de "Severely endangered" sprog har over 100.000 talere?
+        4. Andre spørgsmål i kan stille vha. sæt?
+    </textarea>
+</section>
+
+
+<section data-markdown>
+        <textarea data-template>
+            ### Opgave 2: HTML
+            Nu skal vi se lidt på html og se om vi kan blive klogere på sprogene ved at kigge på deres wiki-sider
+            1. Vælg jeres to yndlingssprog fra listen
+            2. Find sprogenes wiki-sider
+            3. Hvilken URL har siderne? Ville I kunne generere dem automatisk ud fra navnet på sproget?
+            4. Hvis vi gerne vil have trukket de to første paragraffer af tekst ud fra siden, hvor kan I så kigge i html'en?
+            5. Vil I kunne finde teksten fra paragrafferne vha. de værktøjer i allerede kender (eks. urllib)?
+                - Hvad vil vil fungere og hvad vil være svært? 
+
+    </textarea>
+</section>
