@@ -22,7 +22,7 @@ __Uge 7 (d. 24. oktober)__ Arbejde med opgave 1
 
 __Uge 8 (d. 31. oktober)__ Sets & HTML \[[slides](/slides/week08.html)\]
 
-__Uge 9 (d. 7. november)__ Dictionaries <!-- \[[slides](/slides/week09.html)\] -->
+__Uge 9 (d. 7. november)__ Dictionaries \[[slides](/slides/week09.html)\]
 
 __Uge 10 (d. 14. november)__ HTML & XML <!-- \[[slides](/slides/week10.html)\] -->
 

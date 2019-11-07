@@ -1,0 +1,197 @@
+---
+layout: slide
+title: "Uge 9 - Dictionaries"
+---
+
+<section data-markdown>
+    <textarea data-template>
+		Program for i dag
+		
+		- Vi skal lave øvelser med
+			- Dictionaries
+		- Fra sidst: HTML og Wiki-sider
+		- UNESCO data - nu med dictionaries
+    </textarea>
+</section>
+
+
+<section data-markdown>
+        <textarea data-template>
+            ### Opgave 2: HTML (fra sidst)
+            Nu skal vi se lidt på html og se om vi kan blive klogere på sprogene ved at kigge på deres wiki-sider
+            1. Vælg jeres to yndlingssprog fra listen
+            2. Find sprogenes wiki-sider
+            3. Hvilken URL har siderne? Ville I kunne generere dem automatisk ud fra navnet på sproget?
+            4. Hvis vi gerne vil have trukket de to første paragraffer af tekst ud fra siden, hvor kan I så kigge i html'en?
+            5. Vil I kunne finde teksten fra paragrafferne vha. de værktøjer i allerede kender (eks. urllib)?
+                - Hvad vil vil fungere og hvad vil være svært?
+    </textarea>
+</section>
+
+<section data-markdown>
+	<textarea data-template>
+		### Opgave 2: HTML (fra sidst)
+		1. "Sicilian" & "Karelian (Karelia)"
+		2. https://en.wikipedia.org/wiki/Sicilian_language & https://en.wikipedia.org/wiki/Karelian_language 
+		3. Hvilken URL har siderne? Ville I kunne generere dem automatisk ud fra navnet på sproget?
+
+</textarea>
+</section>
+
+<section data-markdown>
+		<textarea data-template>
+			### Opgave 2: HTML (fra sidst)
+			1. "Sicilian" & "Karelian (Karelia)"
+			2. https://en.wikipedia.org/wiki/Sicilian_language & https://en.wikipedia.org/wiki/Karelian_language 
+			3. I de fleste tilfælde, ja, men vi skal nok kunne håndtere `urllib.error.HTTPError`
+	
+	</textarea>
+	</section>
+
+<section data-markdown>
+	<textarea data-template>
+		### Opgave 2: HTML (fra sidst)
+		1. "Sicilian" & "Karelian (Karelia)"
+		2. https://en.wikipedia.org/wiki/Sicilian_language & https://en.wikipedia.org/wiki/Karelian_language 
+		3. I de fleste tilfælde, ja, men vi skal nok kunne håndtere `urllib.error.HTTPError`
+		4. Hvis vi gerne vil have trukket de to første paragraffer af tekst ud fra siden, hvor kan I så kigge i html'en?
+</textarea>
+</section>
+
+<section data-markdown>
+	<textarea data-template>
+		### Opgave 2: HTML (fra sidst)
+		![](wikiSicilian_language.png)
+</textarea>
+</section>
+
+<section data-markdown>
+	<textarea data-template>
+		### Opgave 2: HTML (fra sidst)
+		1. "Sicilian" & "Karelian (Karelia)"
+		2. https://en.wikipedia.org/wiki/Sicilian_language & https://en.wikipedia.org/wiki/Karelian_language 
+		3. I de fleste tilfælde, ja, men vi skal nok kunne håndtere `urllib.error.HTTPError`
+		4. De 2 første `<p>` tags
+</textarea>
+</section>
+
+<section data-markdown>
+	<textarea data-template>
+		### Opgave 2: HTML (fra sidst)
+		1. "Sicilian" & "Karelian (Karelia)"
+		2. https://en.wikipedia.org/wiki/Sicilian_language & https://en.wikipedia.org/wiki/Karelian_language 
+		3. I de fleste tilfælde, ja, men vi skal nok kunne håndtere `urllib.error.HTTPError`
+		4. De 2 første `<p>` tags
+		5. Vil I kunne finde teksten fra paragrafferne vha. de værktøjer i allerede kender (eks. urllib)?
+		- Hvad vil vil fungere og hvad vil være svært?
+</textarea>
+</section>
+
+
+<section data-markdown>
+	<textarea data-template>
+### Opgave 2: HTML
+``` python
+import urllib.request
+import urllib.error
+
+def generateWikiURL(entry, postfix="", lang="en"):
+
+	# Url separator for multi-word entries + postfix
+	sep="_"
+
+	# Base url
+	base = "https://{l}.wikipedia.org/wiki/{e}"
+
+	# Search terms
+	entry = entry.split()
+	postfix = postfix.split()
+
+	url = base.format(l=lang, e=sep.join(entry))
+
+	if postfix: url += sep+sep.join(postfix)
+
+	return url
+
+def strip_parenthesis(s):
+	# Find index of first par
+	parindex = s.find("(")
+
+	# If we found a start parenthesis
+	if parindex!=-1:
+		s = s[:parindex].strip()
+
+	return s
+
+
+language = "Karelian (Karelia)"
+
+url = generateWikiURL(strip_parenthesis(language), postfix="language")
+
+print(url)
+
+try:
+	with urllib.request.urlopen(url) as webpage:
+		for line in webpage:
+			line=line.decode('utf-8')
+			# print("line:", line)
+except urllib.error.HTTPError:
+	pass
+```
+</textarea>
+</section>
+<section data-markdown>
+	<textarea data-template>
+		### Opgave 1 Dictionaries + inverted
+	</textarea>
+</section>
+
+<section data-markdown>
+	<textarea data-template>
+		#### Opgave 1.1 Dictionaries
+
+		1. Indlæs dataen fra `endangered_europe.csv` (fra sidste uge)
+		2. Lav en dictionary, `lang_countr` over sprogene i filen
+			- `key` er navnet på sproget
+			- `value` er landene hvor sproget bliver talt. 
+
+		``` python
+		fpath = "endangered_europe.csv"
+
+		lang_countr = dict()
+		
+		with open(fpath) as f:
+			f.readline() # Skip header
+			for line in f:
+				values = line.strip().split(";")
+				language = values[1]
+				countries = values[4].split(", ")
+		```
+	</textarea>
+</section>
+
+<section data-markdown>
+	<textarea data-template>
+		#### Opgave 1.2 Inverted dictionaries
+
+		1. Lav en ny dictionary hvor i vender `lang_countr` om således at
+			- `key` nu er et land
+			- `value` nu er alle de sprog der tales i det land
+		2. Hvor mange truede sprog bliver der talt i Danmark i følge UNESCO?
+	</textarea>
+</section>
+
+<section data-markdown>
+	<textarea data-template>
+		#### Opgave 1.3 Dictionaries i dictionaries... (bonus)
+
+		<sub>Da vi indlæste filen første gang gemte vi kun data om landede som sprogene blev talt i. Men hvad hvis vi vil gemme alle oplysningerne?</sub>
+		
+		1. Lav en dictionary, `endangered_lang`, hvor
+			- `key` er navnet på et land
+			- `value` er en dictionary som gemmer på oplysninger om <br>1) lande som sproget bliver talt i, 2) antal af talere, og 3) grad af truethed
+			- nu kan `endangered_lang["Sicilian"]["n_speakers"]` give jer hvor mange der taler Siciliansk (alt efter navngivning)
+		2. Hvordan kunne en inverted dictionary se ud?
+		3. Kan man bruge den til at svare på spørgsmålene fra sidste uge?
+	</textarea>
+</section>
