@@ -148,25 +148,25 @@ except urllib.error.HTTPError:
 
 <section data-markdown>
 	<textarea data-template>
-		#### Opgave 1.1 Dictionaries
+#### Opgave 1.1 Dictionaries
 
-		1. Indlæs dataen fra `endangered_europe.csv` (fra sidste uge)
-		2. Lav en dictionary, `lang_countr` over sprogene i filen
-			- `key` er navnet på sproget
-			- `value` er landene hvor sproget bliver talt. 
+1. Indlæs dataen fra `endangered_europe.csv` (fra sidste uge)
+2. Lav en dictionary, `lang_countr` over sprogene i filen
+	- `key` er navnet på sproget
+	- `value` er landene hvor sproget bliver talt. 
 
-		``` python
-		fpath = "endangered_europe.csv"
+``` python
+fpath = "endangered_europe.csv"
 
-		lang_countr = dict()
-		
-		with open(fpath) as f:
-			f.readline() # Skip header
-			for line in f:
-				values = line.strip().split(";")
-				language = values[1]
-				countries = values[4].split(", ")
-		```
+lang_countr = dict()
+
+with open(fpath) as f:
+	f.readline() # Skip header
+	for line in f:
+		values = line.strip().split(";")
+		language = values[1]
+		countries = values[4].split(", ")
+```
 	</textarea>
 </section>
 
