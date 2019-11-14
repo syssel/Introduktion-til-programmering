@@ -49,3 +49,75 @@ title: "Uge 10 - XML"
             - Hvad med samme form af substantivet 'a'?
     </textarea>
 </section>
+
+<section data-markdown>
+    <textarea data-template>
+#### Løsningsforslag
+``` python
+from xml.etree import ElementTree as ET
+
+tree = ET.parse("RO_a.xml")
+root = tree.getroot()
+
+### Hvor mange verber og hvor mange substantiver?  ###
+
+# Fælles for de to løsninger er at vi skal iterere igennem tags'ne
+# for at finde frem til substantiver og verber
+# Så vidt er dette den enste måde man kan gøre det på i xml-etree
+# da den ikke har en count funktion eller supporter xpath count
+
+# Løsning 1
+def count_tag(tag):
+    count = 0
+    for elem in root.iter(tag):
+        count+=1
+    return count
+
+tag = "sb-artikel"
+print(tag, count_tag(tag))
+
+tag = "vb-artikel"
+print(tag, count_tag(tag))
+
+
+# Løsning 2
+n_nouns = 0
+n_verbs = 0
+
+for elem in root.iter('hom'):
+    for child in elem:
+        if child.tag == "sb-artikel":
+            n_nouns+=1
+        if child.tag == "vb-artikel":
+            n_verbs+=1
+
+print(n_nouns)
+print(n_verbs)
+
+### Få genitiv, pl, def formen ####
+# Løsning 2.
+query_noun = "a"
+for elem in root.iter('hom'):
+    if elem.get("sorteringsnøgle")==query_noun:
+        noun = elem.find("sb-artikel")
+        if not noun:
+            print("Query is not a noun")
+            continue
+
+        former = noun.find("fuldformer")
+        for form in former:
+            # Check if correct form
+            if form.get("bestemthed") == "best" and form.get("kasus") == "gen" and form.get("tal") == "pl":
+                print(form.text)
+
+
+# Løsning 2
+query_noun = "autoværn"
+noun_tree = root.find("hom[@sorteringsnøgle='{}']".format(query_noun)) # Vi går ud fra der kun er 1 hom tag
+gen_pl_def = noun_tree.find("sb-artikel/fuldformer/ff[@bestemthed='best'][@kasus='gen'][@tal='pl']") # Det samme med fuldform
+if gen_pl_def != None:
+    print(gen_pl_def.text)
+
+```
+    </textarea>
+</section>
