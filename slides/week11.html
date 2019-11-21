@@ -1,0 +1,125 @@
+---
+layout: slide
+title: "Uge 11 - HTML (fortsat)"
+---
+
+<section data-markdown>
+	<textarea data-template>
+		Program for i dag
+	
+		- Vi skal lave øvelser med
+			- HTML
+		- Simpel "web scraping" i python
+			- bs4 - Beutiful Soup
+			- Wikipedia-artikler for truede sprog (Unesco dataset)
+	</textarea>
+</section>
+
+<section data-markdown>
+	<textarea data-template>
+		#### bs4 - Beautiful Soup
+		![](https://cdn-images-1.medium.com/max/495/1*AaAIETIq7XNlLrFQW7BtZg.png)
+	</textarea>
+</section>
+
+<section data-markdown>
+	<textarea data-template>
+		#### bs4 - Beautiful Soup
+		- Bibliotek (kan installeres vha. pip)
+			- I terminalen: `pip3 install bs4` eller `pip install bs4`
+		- Parse/læse html-sider
+		- Alternativ til at arbejde med html-sider som strenge
+		- Læser strukturen på siden, ligesom xml.etree gjorde for xml-filer
+	</textarea>
+</section>
+
+<section data-markdown>
+	<textarea data-template>
+```python
+# Import BeautifulSoup
+from bs4 import BeautifulSoup
+
+# Html string
+html = """
+	<div>
+		<h2>Mine slides for i dag</h2>
+		<p> I dag skal vi arbejde med</p>
+		<ul>
+			<li>Lister</li>
+			<li>Strings</li>				
+			<li>Sets</li>
+			<li>Dictionaries <em>fortsat fra sidste gang</em></li>
+		</ul>
+	</div> 
+"""
+
+# Parse html string uisng beautifulsoup
+soup = BeautifulSoup(html, "lxml")
+
+# Get all of the list items
+to_do = soup.find_all("li")
+
+# Enumerate through the list items
+for i, item in enumerate(to_do):
+	print(i, item.get_text()) # Print cleaned text
+```
+	</textarea>
+</section>
+
+<section data-markdown>
+	<textarea data-template>
+		#### Opgave 1: Wiki-beskrivelser af de truede sprog
+		<sub>
+		I denne opgave skal vi arbejde med arbejde med simpel web scraping i python vha. Beautiful Soup biblioteket.
+		Opgaven lyder at bruge python til at finde flere informationer om de truede sprog fra wikipedia.
+		</sub>
+
+	</textarea>
+</section>
+
+<section data-markdown>
+		<textarea data-template>
+			#### Opgave 1: Wiki-beskrivelser af de truede sprog
+
+			- Liste over truede sprog, `endangered_europe.csv`, på absalon
+			- Wikipedia-artikler
+	
+			<img src="wikiSicilian_language.png" width="50%">
+	
+		</textarea>
+	</section>
+
+<section data-markdown>
+	<textarea data-template>
+		#### Opgave 1: Wiki-beskrivelser af de truede sprog
+		1. Indlæs `endangered_europe.csv` i python
+			- Genbrug gerne kode fra uge 9 [her](https://syssel.github.io/Introduktion-til-programmering/slides/week09.html#/11)
+		2. For hver af sprogene sprogene skal i generere en URL-streng som svarer til sprogets wikipedia-artikel
+			- Hvis sprogets engelsk navn er "Sicilian":  <icode>https://en.wikipedia.org/wiki/<mark>Sicilian_language</mark></icode>
+			- Dette virker for de fleste sprog, men ikke alle
+			- Hvis I kan (brug ikke for meget tid på det), så fjern eventuelt parenteser fra navnene
+			- Genbrug gerne funktionerne/kode fra uge 9 [her](https://syssel.github.io/Introduktion-til-programmering/slides/week09.html#/09)
+
+	</textarea>
+</section>
+
+<section data-markdown>
+	<textarea data-template>
+	#### Opgave 1: Wiki-beskrivelser af de truede sprog
+
+	<ol start=3>
+	<li>Brug urllib til at indlæse hver af sprogenes wikipedia-artikler i python</li>
+	<li>Brug BeautifulSoup til at finde artiklernes første tekstparagraf</li>
+	<li>Print beskrivelserne af sprogene i python</li>
+	</ol>
+
+	</textarea>
+</section>
+
+<section data-markdown>
+	<textarea data-template>
+		#### (bonus) Opgave 2: Hjemmeside om truede sprog
+		1. Hvis I når så langt, så prøv at skrive en html-fil i python, hvor I bruger dataen fra csv-filen sammen med de scrapede wiki-artikler
+		2. Det kunne for eksempel være i en tabel eller som ren tekst med overskrifter
+	</textarea>
+</section>

@@ -26,7 +26,7 @@ __Uge 9 (d. 7. november)__ Dictionaries \[[slides](/slides/week09.html)\]
 
 __Uge 10 (d. 14. november)__ XML \[[slides](/slides/week10.html)\]
 
-__Uge 11 (d. 21. november)__ HTML <!-- \[[slides](/slides/week11.html)\] -->
+__Uge 11 (d. 21. november)__ HTML \[[slides](/slides/week11.html)\]
 
 __Uge 12 (d. 28. november)__ Arbejde med opgave 2
 
