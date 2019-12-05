@@ -30,4 +30,4 @@ __Uge 11 (d. 21. november)__ HTML \[[slides](/slides/week11.html)\]
 
 __Uge 12 (d. 28. november)__ Arbejde med opgave 2
 
-__Uge 13 (d. 5. december)__ N-grammer & opsamling <!-- \[[slides](/slides/week13.html)\] -->
+__Uge 13 (d. 5. december)__ N-grammer & opsamling \[[slides](/slides/week13.html)\]
